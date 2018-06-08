@@ -1,49 +1,68 @@
-let dataUsers= new XMLHttpRequest();
-dataUsers.open("GET", "/data/cohorts/lim-2018-03-pre-core-pw/users.json")
-dataUsers.onload = function() {
-    if (dataUsers.status >= 200 && dataUsers.status < 400) {
-      // Success!
-      let dataU = JSON.parse(dataUsers.responseText);
-      console.log(dataU);
+/*const requestUsers = new XMLHttpRequest();
+requestUsers.open("GET", "/data/cohorts/lim-2018-03-pre-core-pw/users.json")
+requestUsers.onload = function () {
+    if (requestUsers.status >= 200 && requestUsers.status < 400) {
+        // Success!
+        const dataUsers = JSON.parse(requestUsers.responseText);
+        console.log(dataUsers);
+        //console.log(`${dataUsers.id} empezó : ${dataUsers.start}`);
     } else {
-      // We reached our target server, but it returned an error
-  
+        // We reached our target server, but it returned an error
+
     }
-    
-  };
-  dataUsers.send();
-  console.log(dataUsers);
 
+};
+requestUsers.send();
+console.log(requestUsers); */
 
-let dataProgress= new XMLHttpRequest();
-dataProgress.open("GET", "/data/cohorts/lim-2018-03-pre-core-pw/progress.json")
-dataProgress.onload = function() {
-    if (dataProgress.status >= 200 && dataProgress.status < 400) {
-      // Success!
-      let dataP = JSON.parse(dataProgress.responseText);
-      console.log(dataP);
+const prueba = () => {
+    if (requestUsers.status >= 200 && requestUsers.status < 400) {
+        // Success!
+        const dataUsers = JSON.parse(requestUsers.responseText);
+        console.log(dataUsers);
+        //console.log(`${dataUsers.id} empezó : ${dataUsers.start}`);
     } else {
-      // We reached our target server, but it returned an error
-  
+        // We reached our target server, but it returned an error
+
     }
-    
-  };
-  dataProgress.send();
-  console.log(dataProgress);
+
+};
+const requestUsers = new XMLHttpRequest();
+requestUsers.open("GET", "/data/cohorts/lim-2018-03-pre-core-pw/users.json")
+requestUsers.onload = prueba;
+requestUsers.send();
+console.log(requestUsers);
 
 
-let dataGlobal= new XMLHttpRequest();
-dataGlobal.open("GET", "/data/cohorts.json")
-dataGlobal.onload = function() {
-    if (dataGlobal.status >= 200 && dataGlobal.status < 400) {
-      // Success!
-      let dataG = JSON.parse(dataGlobal.responseText);
-      console.log(dataG);
+const requestProgress = new XMLHttpRequest();
+requestProgress.open("GET", "/data/cohorts/lim-2018-03-pre-core-pw/progress.json")
+requestProgress.onload = function () {
+    if (requestProgress.status >= 200 && requestProgress.status < 400) {
+        // Success!
+        const dataProgress = JSON.parse(requestProgress.responseText);
+        console.log(dataProgress);
     } else {
-      // We reached our target server, but it returned an error
-  
+        // We reached our target server, but it returned an error
+
     }
-    
-  };
-  dataGlobal.send();
-  console.log(dataGlobal);
+
+};
+requestProgress.send();
+console.log(requestProgress);
+
+
+const requestGlobal = new XMLHttpRequest();
+requestGlobal.open("GET", "/data/cohorts.json")
+requestGlobal.onload = function () {
+    if (requestGlobal.status >= 200 && requestGlobal.status < 400) {
+        // Success!
+        const dataGlobal = JSON.parse(requestGlobal.responseText);
+        console.log(dataGlobal);
+    } else {
+        // We reached our target server, but it returned an error
+
+    }
+
+};
+requestGlobal.send();
+console.log(requestGlobal);
