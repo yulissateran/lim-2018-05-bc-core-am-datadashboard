@@ -1,0 +1,3 @@
+window.obtenerdatosenpantalla =(data,progres)=>{
+
+};

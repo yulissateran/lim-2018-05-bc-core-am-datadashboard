@@ -1,68 +1,57 @@
-/*const requestUsers = new XMLHttpRequest();
-requestUsers.open("GET", "/data/cohorts/lim-2018-03-pre-core-pw/users.json")
-requestUsers.onload = function () {
-    if (requestUsers.status >= 200 && requestUsers.status < 400) {
-        // Success!
-        const dataUsers = JSON.parse(requestUsers.responseText);
-        console.log(dataUsers);
-        //console.log(`${dataUsers.id} empezó : ${dataUsers.start}`);
-    } else {
-        // We reached our target server, but it returned an error
 
-    }
 
-};
-requestUsers.send();
-console.log(requestUsers); */
+let usuariasDelCohort = "/data/cohorts/lim-2018-03-pre-core-pw/users.json";
+const progresoDeUsuarias = "/data/cohorts/lim-2018-03-pre-core-pw/progress.json"
+const listaDeCohorts = "/data/cohorts.json";
 
-const prueba = () => {
-    if (requestUsers.status >= 200 && requestUsers.status < 400) {
-        // Success!
-        const dataUsers = JSON.parse(requestUsers.responseText);
-        console.log(dataUsers);
-        //console.log(`${dataUsers.id} empezó : ${dataUsers.start}`);
-    } else {
-        // We reached our target server, but it returned an error
-
-    }
+let usuarias ="";
+let method= "GET";
+let traerDatos = ()=>{ 
+  fetch(usuariasDelCohort)
+  .then((response) => response.json())
+  .then((data) => data)
+  .catch((err)=> {
+  console.log(err.message)
+  });
 
 };
-const requestUsers = new XMLHttpRequest();
-requestUsers.open("GET", "/data/cohorts/lim-2018-03-pre-core-pw/users.json")
-requestUsers.onload = prueba;
-requestUsers.send();
-console.log(requestUsers);
+document.getElementById('SalidadeDatos').innerHTML = traerDatos();
+// console.log(traerDatos(usuariasDelCohort));
+document.getElementById('plasmarDatos').addEventListener('click', traerDatos(usuariasDelCohort));
 
+// const traerprogreso = () => {
+//   fetch(progresoDeUsuarias)
+//     .then((response) => response.json())
+//     .then((progres) => {
+//       console.log(progres);
+//     }).catch((err) => {
+//       console.log(err.message);
+//     });
+// };
+// document.getElementById('plasmarProgreso').addEventListener('click', traerprogreso()); 
 
-const requestProgress = new XMLHttpRequest();
-requestProgress.open("GET", "/data/cohorts/lim-2018-03-pre-core-pw/progress.json")
-requestProgress.onload = function () {
-    if (requestProgress.status >= 200 && requestProgress.status < 400) {
-        // Success!
-        const dataProgress = JSON.parse(requestProgress.responseText);
-        console.log(dataProgress);
-    } else {
-        // We reached our target server, but it returned an error
+// const traercohorts = () => {
+//   fetch(listaDeCohorts)
+//     .then((response) => response.json())
+//     .then((cohorts) => {
+//       //  procesandorespuesta(data);
+//       //  arreglo.push(data);
+//       // console.log(progres["00hJv4mzvqM3D9kBy3dfxoJyFV82"]);
+//       console.log(JSON.stringify(cohorts));
+//       console.log(cohorts[0]);
+//     }).catch((err) => {
+//       console.log(err.message);
+//     });
+// };
 
-    }
-
-};
-requestProgress.send();
-console.log(requestProgress);
-
-
-const requestGlobal = new XMLHttpRequest();
-requestGlobal.open("GET", "/data/cohorts.json")
-requestGlobal.onload = function () {
-    if (requestGlobal.status >= 200 && requestGlobal.status < 400) {
-        // Success!
-        const dataGlobal = JSON.parse(requestGlobal.responseText);
-        console.log(dataGlobal);
-    } else {
-        // We reached our target server, but it returned an error
-
-    }
-
-};
-requestGlobal.send();
-console.log(requestGlobal);
+// document.getElementById('plasmarProgreso').addEventListener('click', traercohorts()); 
+// fetch('https://api-to-call.com/endpoint')
+//   .then(response => {
+//     if (response.ok) {
+//       return response.json();
+//     }
+//     throw new Error('Request failed!');
+//   }, networkError => console.log(networkError.message)
+//   ).then(jsonResponse => {
+//     return jsonResponse;
+//   });
