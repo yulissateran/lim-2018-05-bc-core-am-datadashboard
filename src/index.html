@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Data Dashboard</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <script src="main.js"></script>
-    <script src="data.js"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css" />
+  <title>Data Dashboard</title>
+</head>
+<body>
+  <header class="header">
+   <h1  id="" class="">Laboratoria Datadashboard</h1>
+  </header>
+  <main>
+    
+  </main>
+  <form class="search-students" action="">
+    <button id="cohorts-btn">Cohorts</button>
+    <select id='selector' class="hidden"></select>
+    <div id="search-students"class="search-students hidden">
+        <h2  id="list-students" class="list-students hidden">Lista de alumnas</h2>
+        <button id="search">Buscar</button>
+        <input id="enter-name">
+        <button>Ordenar</button>
+        <button id="prueba">Prueba</button>
+        <br/>
+    </div>
+    <div>
+      <ul id="response-container"></ul>
+    </div> 
+  </form>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+</body>
 </html>

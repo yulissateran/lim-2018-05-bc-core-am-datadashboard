@@ -1,68 +1,102 @@
-/*const requestUsers = new XMLHttpRequest();
-requestUsers.open("GET", "/data/cohorts/lim-2018-03-pre-core-pw/users.json")
-requestUsers.onload = function () {
-    if (requestUsers.status >= 200 && requestUsers.status < 400) {
-        // Success!
-        const dataUsers = JSON.parse(requestUsers.responseText);
-        console.log(dataUsers);
-        //console.log(`${dataUsers.id} empezó : ${dataUsers.start}`);
-    } else {
-        // We reached our target server, but it returned an error
+//Declarando variables
+let enterName = document.getElementById('enter-name');
+const cohortLima = document.getElementById('cohort-Lima');
+const getUsersEndpoints = '/data/cohorts/lim-2018-03-pre-core-pw/users.json';
+const getUsersProgressEndpoint = '/data/cohorts/lim-2018-03-pre-core-pw/progress.json';
+const getUsersGlobalEndpoint = '/data/cohorts.json';
+const resultUsers = document.getElementById('response-container');
+const prueba = document.getElementById('prueba');
 
-    }
+//Creando la lista de cohorts 
+const getCohorts = () => {
+    fetch(getUsersGlobalEndpoint, { method: 'GET' })
+        .then((response) => {
+            if (response.status !== 200) {
+                alert('Error')
+            }
+            return response.json();
+        })
+        .then((dataCohorts) => {
+            dataCohorts.forEach(cohort => {
+                let listIdCohorts = document.createElement('option');
+                listIdCohorts.value = cohort.id;
+                listIdCohorts.innerText = cohort.id;
+                selector.appendChild(listIdCohorts);
+            })
+        })
+}
 
+// Filtrando estudiantes por cohort
+const getUsers = (signupCohort) => {
+    let filterUsers = [];
+    fetch(getUsersEndpoints, { method: 'GET' })
+        .then((response) => {
+            if (response.status !== 200) {
+                alert('Error')
+            }
+            return response.json();
+        })
+        .then((users) => {
+            users.forEach(user => {
+                if (user.signupCohort === signupCohort) {
+                    filterUsers.push(user);
+                }
+            });
+            listUsers(filterUsers);
+        })
 };
-requestUsers.send();
-console.log(requestUsers); */
+//crea la ista de usuarias del cohort y le da un enlace hacia progres
+const listUsers = (lstUsers) => {
+    resultUsers.innerHTML = '';
+    lstUsers.forEach(user => {
+        let liUser = document.createElement('li');
+        let aUser = document.createElement('a');
+        aUser.innerHTML = user.name,
+        aUser.setAttribute('href', 'javascript;');
+        aUser.addEventListener('click', (e)=>{
+            e.preventDefault();
+            getUsersProgress(user.id);
+        });
+        liUser.appendChild(aUser);
+        resultUsers.appendChild(liUser);
+    });
+}
 
-const prueba = () => {
-    if (requestUsers.status >= 200 && requestUsers.status < 400) {
-        // Success!
-        const dataUsers = JSON.parse(requestUsers.responseText);
-        console.log(dataUsers);
-        //console.log(`${dataUsers.id} empezó : ${dataUsers.start}`);
-    } else {
-        // We reached our target server, but it returned an error
-
-    }
-
+//Traer progreso
+const getUsersProgress = (idUser) => {
+    let filterUsersProgress = [];
+    fetch(getUsersProgressEndpoint, { method: 'GET' })
+        .then((response) => {
+            if (response.status !== 200) {
+                alert('Error')
+            }
+            return response.json();
+        })
+        .then((progressUsers) => {
+            let progressUser = progressUsers[idUser];
+            console.log(progressUser);
+        })
 };
-const requestUsers = new XMLHttpRequest();
-requestUsers.open("GET", "/data/cohorts/lim-2018-03-pre-core-pw/users.json")
-requestUsers.onload = prueba;
-requestUsers.send();
-console.log(requestUsers);
 
-
-const requestProgress = new XMLHttpRequest();
-requestProgress.open("GET", "/data/cohorts/lim-2018-03-pre-core-pw/progress.json")
-requestProgress.onload = function () {
-    if (requestProgress.status >= 200 && requestProgress.status < 400) {
-        // Success!
-        const dataProgress = JSON.parse(requestProgress.responseText);
-        console.log(dataProgress);
-    } else {
-        // We reached our target server, but it returned an error
-
-    }
-
+//Buscar estudiantes por nombre
+const FilterUsers = (users) => {
+    let filterUsersName = [];
+    fetch(getUsersEndpoints, { method: 'GET' })
+        .then((response) => {
+            if (response.status !== 200) {
+                alert('Error')
+            }
+            return response.json();
+        })
+        .then((requestusers) => {
+            requestusers.forEach(user => { // recorrer la data
+                if (user.name === users) {
+                    filterUsersName.push(user); //adicionar elemento al array
+                }
+            });
+            listUsers(filterUsersName);
+        })
 };
-requestProgress.send();
-console.log(requestProgress);
 
 
-const requestGlobal = new XMLHttpRequest();
-requestGlobal.open("GET", "/data/cohorts.json")
-requestGlobal.onload = function () {
-    if (requestGlobal.status >= 200 && requestGlobal.status < 400) {
-        // Success!
-        const dataGlobal = JSON.parse(requestGlobal.responseText);
-        console.log(dataGlobal);
-    } else {
-        // We reached our target server, but it returned an error
 
-    }
-
-};
-requestGlobal.send();
-console.log(requestGlobal);
