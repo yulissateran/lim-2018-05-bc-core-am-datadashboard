@@ -6055,5 +6055,21 @@
         "signupCohort": "lim-2018-03-pre-core-pw",
         "timezone": "America/Lima",
         "role": "student"
+    },
+    {
+        "id": "zxy4PMHi5Wb03i9WSexAE1yVWKz2",
+        "name": "DIANA VANESSA CHILE",
+        "locale": "es-ES",
+        "signupCohort": "lim-2018-03-pre-core-pw",
+        "timezone": "America/Chile",
+        "role": "student"
+    },
+    {
+        "id": "zxy4PMHi5Wb03i9WSexAE1yVWKz2",
+        "name": "DIANA VANESSA MEXICO",
+        "locale": "es-ES",
+        "signupCohort": "lim-2018-03-pre-core-pw",
+        "timezone": "America/Mexico",
+        "role": "student"
     }
 ]
