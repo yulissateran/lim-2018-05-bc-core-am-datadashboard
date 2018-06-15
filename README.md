@@ -24,7 +24,7 @@ En acuerdo con mi pareja de equipo se acordo comenzar con las siguientes tareas 
 
 ![prototipo](https://scontent-scl1-1.xx.fbcdn.net/v/t1.15752-9/35355336_1810374425708955_4229119284074250240_n.png?_nc_cat=0&oh=ba30f01a53ca97da5ad81d8b378abbe1&oe=5B77B04C)
 
-## Maquetazación Inicial en HTML
+## Maquetación Inicial en HTML
 
 ![interfaz](https://scontent-scl1-1.xx.fbcdn.net/v/t1.15752-9/35358704_1810398625706535_2083524725899788288_n.png?_nc_cat=0&oh=7d9ef5787cffd3d256bebc36e1d9f81e&oe=5BB428E5)
 
