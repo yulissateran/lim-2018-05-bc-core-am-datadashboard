@@ -25,4 +25,10 @@ selectorOfCohorts.addEventListener('change', (e) => {
     searchStudents.classList.remove('hidden');
     titleListStudent.classList.remove('hidden');
 });
+btnSearch.addEventListener('click', (e) => {
+        e.preventDefault();
+        searchStudent(searchName.value);
+    });
+
+
 
