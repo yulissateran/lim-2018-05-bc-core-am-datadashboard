@@ -20,4 +20,6 @@ En acuerdo con mi pareja de equipo se acordo comenzar con las siguientes tareas 
 
 ![kanban2](https://scontent-scl1-1.xx.fbcdn.net/v/t1.15752-9/35400884_1810343885712009_1314909176882790400_n.png?_nc_cat=0&oh=c672c3b9a8d5c0bc65091de9dbd4569c&oe=5BAF8EE1)
 
+## Prototipo en papel
 
+![prototipo](https://scontent-scl1-1.xx.fbcdn.net/v/t1.15752-9/35355336_1810374425708955_4229119284074250240_n.png?_nc_cat=0&oh=ba30f01a53ca97da5ad81d8b378abbe1&oe=5B77B04C)
