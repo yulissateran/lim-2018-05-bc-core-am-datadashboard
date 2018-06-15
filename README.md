@@ -4,6 +4,8 @@
 
 ![kanban1](https://scontent-scl1-1.xx.fbcdn.net/v/t1.15752-9/35464434_1810343875712010_7913204903298727936_n.png?_nc_cat=0&oh=7acd47cb0f214cffd47a23238f819154&oe=5BC3E025)
 
+![kanban2](https://scontent-scl1-1.xx.fbcdn.net/v/t1.15752-9/35400884_1810343885712009_1314909176882790400_n.png?_nc_cat=0&oh=c672c3b9a8d5c0bc65091de9dbd4569c&oe=5BAF8EE1)
+
 ## Aplicaciones en el mundo real
 
 En el mundo de la web es muy común el uso de _dashboards_. De hecho, [wikipedia](https://goo.gl/P7PF4y)
