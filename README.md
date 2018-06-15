@@ -26,6 +26,12 @@ En acuerdo con mi pareja de equipo se acordo comenzar con las siguientes tareas 
 
 ## Maquetación Inicial en HTML
 
+- El programa nos muestra la lista de cohorts, del cuál al seleccionar un determinado cohort muestra la lista de estudiantes que pertenecen a ese cohort.
+
+- Permite buscar una estudiante específica dentro del cohort seleccionado ingresando el nombre completo.
+
+- Además al seleccionar la estudiante nos muestra el porcentaje la competitud de todos los cursos.
+
 ![interfaz](https://scontent-scl1-1.xx.fbcdn.net/v/t1.15752-9/35358704_1810398625706535_2083524725899788288_n.png?_nc_cat=0&oh=7d9ef5787cffd3d256bebc36e1d9f81e&oe=5BB428E5)
 
 
