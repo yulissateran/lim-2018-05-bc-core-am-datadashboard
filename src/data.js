@@ -1,102 +1,108 @@
 //Declarando variables
-let enterName = document.getElementById('enter-name');
-const cohortLima = document.getElementById('cohort-Lima');
-const getUsersEndpoints = '/data/cohorts/lim-2018-03-pre-core-pw/users.json';
-const getUsersProgressEndpoint = '/data/cohorts/lim-2018-03-pre-core-pw/progress.json';
-const getUsersGlobalEndpoint = '/data/cohorts.json';
-const resultUsers = document.getElementById('response-container');
-const prueba = document.getElementById('prueba');
 
 //Creando la lista de cohorts 
-const getCohorts = () => {
-    fetch(getUsersGlobalEndpoint, { method: 'GET' })
-        .then((response) => {
-            if (response.status !== 200) {
-                alert('Error')
-            }
-            return response.json();
-        })
-        .then((dataCohorts) => {
-            dataCohorts.forEach(cohort => {
-                let listIdCohorts = document.createElement('option');
-                listIdCohorts.value = cohort.id;
-                listIdCohorts.innerText = cohort.id;
-                selector.appendChild(listIdCohorts);
-            })
-        })
+const getListOfCohorts = () => {
+  fetch(CohortsOfLaboratoria, { method: 'GET' })
+  .then((response) => {
+    if (response.status !== 200) {
+      alert('Error')
+    }
+    return response.json();
+    })
+ .then((responseFromCohorts) => {
+    responseFromCohorts.forEach(cohort => {
+      let nameOfCohort = document.createElement('option');
+      nameOfCohort.value = cohort.id;
+      nameOfCohort.innerText = cohort.id;
+      selectorOfCohorts.appendChild(nameOfCohort);
+    })
+  })
 }
 
+
 // Filtrando estudiantes por cohort
-const getUsers = (signupCohort) => {
-    let filterUsers = [];
-    fetch(getUsersEndpoints, { method: 'GET' })
-        .then((response) => {
-            if (response.status !== 200) {
-                alert('Error')
-            }
-            return response.json();
-        })
-        .then((users) => {
-            users.forEach(user => {
-                if (user.signupCohort === signupCohort) {
-                    filterUsers.push(user);
-                }
-            });
-            listUsers(filterUsers);
-        })
-};
-//crea la ista de usuarias del cohort y le da un enlace hacia progres
-const listUsers = (lstUsers) => {
-    resultUsers.innerHTML = '';
-    lstUsers.forEach(user => {
-        let liUser = document.createElement('li');
-        let aUser = document.createElement('a');
-        aUser.innerHTML = user.name,
-        aUser.setAttribute('href', 'javascript;');
-        aUser.addEventListener('click', (e)=>{
-            e.preventDefault();
-            getUsersProgress(user.id);
-        });
-        liUser.appendChild(aUser);
-        resultUsers.appendChild(liUser);
+const getNameUsersOfCohort = (NameOfCohort) => {
+  let arrayOfUsersOfOneCohort = [];
+  fetch(cohortLim2018_03_precore_pw, { method: 'GET' })
+    .then((response) => {
+      if (response.status !== 200) {
+        alert('Error')
+      }
+      return response.json();
+      })
+    .then((responseOfCohort) => {
+      responseOfCohort.forEach(user => {
+        if (user.signupCohort === NameOfCohort) {
+          arrayOfUsersOfOneCohort.push(user);
+        }
+      });
+      paintUsersFromCohort(arrayOfUsersOfOneCohort);
+    })
+}; 
+
+//pinta la ista de usuarias del cohort y le da un "enlace" hacia progres
+const paintUsersFromCohort = (arrayOfUsersOfOneCohort) => {
+  containerListUsers.innerHTML = '';
+  arrayOfUsersOfOneCohort.forEach(user => {
+    let createElementLi = document.createElement('li');
+    let createElement_A = document.createElement('a');
+    createElement_A.innerHTML = user.name,
+    createElement_A.setAttribute('href', 'javascript;');
+    createElement_A.addEventListener('click', (e)=>{
+      e.preventDefault();
+      getUsersProgress(user.id);
+    });
+    createElementLi.appendChild(createElement_A);
+    containerListUsers.appendChild(createElementLi);
     });
 }
 
-//Traer progreso
-const getUsersProgress = (idUser) => {
-    let filterUsersProgress = [];
-    fetch(getUsersProgressEndpoint, { method: 'GET' })
-        .then((response) => {
-            if (response.status !== 200) {
-                alert('Error')
-            }
-            return response.json();
-        })
-        .then((progressUsers) => {
-            let progressUser = progressUsers[idUser];
-            console.log(progressUser);
-        })
-};
-
 //Buscar estudiantes por nombre
-const FilterUsers = (users) => {
-    let filterUsersName = [];
-    fetch(getUsersEndpoints, { method: 'GET' })
-        .then((response) => {
-            if (response.status !== 200) {
-                alert('Error')
-            }
-            return response.json();
-        })
-        .then((requestusers) => {
-            requestusers.forEach(user => { // recorrer la data
-                if (user.name === users) {
-                    filterUsersName.push(user); //adicionar elemento al array
-                }
-            });
-            listUsers(filterUsersName);
-        })
+const searchStudent = (student) => {
+  let arrayNameUser = [];
+  fetch(cohortLim2018_03_precore_pw, { method: 'GET' })
+  .then((response) => {
+    if (response.status !== 200) {
+      alert('Error')
+    }
+    return response.json();
+    })
+    .then((dataOfUsers) => {
+      dataOfUsers.forEach(user => { // recorrer la data
+        if (user.name === student) {
+          arrayNameUser.push(user); //adicionar elemento al array
+        }
+      });
+      paintUsersFromCohort(arrayNameUser);
+    })
 };
 
+//Traer progreso
+const getUsersProgress = (idStudent) => {
+  fetch(progressOfUsersOfLim2018_03_precore_pw, { method: 'GET' })
+  .then((response) => {
+    if (response.status !== 200) {
+      alert('Error')
+    }
+    return response.json();
+    })
+    .then((progressStudents) => {
+      let progressUser = progressStudents[idStudent]["intro"]["percent"];
+      createContainerForScore(progressUser)
+       console.log(progressUser);
+    })
+};
+
+
+const createContainerForScore=(scoreForStudent)=>{
+  containerListProgress.innerHTML="";
+  let createElement_Li = document.createElement('li');
+  createElement_Li.innerText = scoreForStudent;
+  let createElementP = document.createElement('p');
+  createElementP.innerText = "Porcentaje de completidud de todos los cursos";
+  containerListProgress.appendChild(createElementP);
+  containerListProgress.appendChild(createElement_Li);
+  
+}
 
 

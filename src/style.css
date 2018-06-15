@@ -3,6 +3,9 @@ header, h2{
    margin: 10px;
 }
 
+.listStudents,.listProgress {
+  float: left;
+}
 .hidden{
     display: none;
 }
