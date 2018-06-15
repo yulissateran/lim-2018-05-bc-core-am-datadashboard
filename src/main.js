@@ -1,7 +1,7 @@
 //declarando variables 
-const CohortsOfLaboratoria = '/data/cohorts.json';
-const cohortLim2018_03_precore_pw = '/data/cohorts/lim-2018-03-pre-core-pw/users.json';
-const progressOfUsersOfLim2018_03_precore_pw = '/data/cohorts/lim-2018-03-pre-core-pw/progress.json';
+const CohortsOfLaboratoria = '../data/cohorts.json';
+const cohortLim2018_03_precore_pw = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
+const progressOfUsersOfLim2018_03_precore_pw = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const containerListUsers = document.getElementById('containerListUsers');
 const containerListProgress = document.getElementById('containerListProgress');
 const selectorOfCohorts = document.getElementById('selectorOfCohorts');
