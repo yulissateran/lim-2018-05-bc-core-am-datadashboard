@@ -84,25 +84,53 @@ const deagregateTypes = (progressUser) => {
     let exercisesCounter = 0;
     let completedExercisesCounter = 0;
 
-    //recorremos las unidades
-    for (unitKey in intro.units) {
-        let unit = intro.units[unitKey];
-        for (partKey in unit.parts) {
-            let part = unit.parts[partKey];
-            let type = part.type;
-            if (type === 'quiz') {
-                quizCounter++;
-                if (part.completed === 1) {
-                    completedQuizCounter++;
-                    quizAccumulatedScore = quizAccumulatedScore+part.score;
-                }
-            }
-        }
-    }
+    try {
+        //recorremos las unidades
+        for (unitKey in intro.units) {
+            let unit = intro.units[unitKey];
+            for (partKey in unit.parts) {
+                let part = unit.parts[partKey];
+                let type = part.type;
+                if (type === 'quiz') {
+                    quizCounter++;
+                    if (part.completed === 1) {
+                        completedQuizCounter++;
+                        quizAccumulatedScore = quizAccumulatedScore+part.score;
+                    }
+                } 
 
-    console.log(quizCounter);
-    console.log(completedQuizCounter);
-    console.log(quizAccumulatedScore);
+                if (type === 'practice') {
+                    exercisesCounter++;
+                    if (part.completed === 1) {
+                        completedExercisesCounter++;
+                    }
+                }
+
+                if (type === 'read') {
+                    readCounter++;
+                    if (part.completed === 1) {
+                        completedReadCounter++;
+                    }
+                }
+
+            }
+        }        
+    } catch (error) {
+        console.log('Data Incompleta');
+    }
+    console.log('Datos de Lectura');
+    console.log('# total de lecturas presentes en el cohort: ' + readCounter);
+    console.log('# de lecturas completadas por el usuario: ' + completedReadCounter);
+    console.log('% de lecturas completadas: ' + (completedReadCounter/readCounter)*100);
+    console.log('Datos de Ejercicios');
+    console.log('# total de ejercicios autocorregidos en el cohort: ' + exercisesCounter);
+    console.log('# de ejercicios autocorregidos completadas por el usuario: ' + completedExercisesCounter);
+    console.log('% de ejercicios autocorregidos completadas: ' + (completedExercisesCounter/exercisesCounter)*100);
+    console.log('Datos de Quiz');
+    console.log('# total de quizzes en cursos del cohort: ' + quizCounter);
+    console.log('# de quizzes completadas por el usuario: ' + completedQuizCounter);
+    console.log('Suma de score de los quizzes completados: ' + quizAccumulatedScore);
+    console.log('Promedio de puntuaciones en quizzes completados: ' + (quizAccumulatedScore));
 
 };
 
