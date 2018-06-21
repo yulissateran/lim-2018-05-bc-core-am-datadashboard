@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css" />
+  <title>Data Dashboard</title>
+</head>
+
+<body>
+  <header class="header">
+    <h1 id="" class="">Laboratoria Datadashboard</h1>
+  </header>
+  <main>
+  </main>
+  <form class="search-students" action="">
+    <p>Cohorts</p>
+    <select id='selector-Of-Cohorts'></select>
+    <div id="search-students" class="search-students hidden">
+      <h2 id="list-students" class="list-students hidden">Lista de alumnas</h2>
+      <button id="btnSearch">Buscar</button>
+      <input id="searchName" />
+      <button>Ordenar</button>
+      <br/>
+    </div>
+    <div>
+      <ul class="listStudents" id="containerListUsers"></ul>
+      <ul class="listProgress" id="containerListProgress"></ul>
+    </div>
+  </form>
+  <p id="prueba" class="hidden">Read</p>
+  <ul id="read-counter"></ul>
+  <ul id="completed-read"></ul>
+  <ul id="percent-read"></ul>
+  <p class="hidden">Exercises</p>
+  <ul id="exercises-counter"></ul>
+  <ul id="completed-exercises"></ul>
+  <ul id="percent-exercises"></ul>
+  <p class="hidden">Quiz</p>
+  <ul id="quiz-counter"></ul>
+  <ul id="completed-quiz"></ul>
+  <ul id="quiz-score"></ul>
+  <ul id="percent-score"></ul>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
