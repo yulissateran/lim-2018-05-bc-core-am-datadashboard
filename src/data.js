@@ -1,8 +1,3 @@
-//Declarando variables 
-const CohortsOfLaboratoria = '../data/cohorts.json';
-const cohortLim2018_03_precore_pw = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
-const progressOfUsersOfLim2018_03_precore_pw = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
-
 //Creando la lista de cohorts 
 const getListOfCohorts = () => {
     fetch(CohortsOfLaboratoria, { method: 'GET' })
@@ -51,6 +46,7 @@ const paintUsersCohort = (arrayOfUsersOfOneCohort) => {
         createElement_A.addEventListener('click', (e) => {
             e.preventDefault();
             getUsersProgress(user.id);
+            prueba.classList.remove('hidden');
         });
         createElementLi.appendChild(createElement_A);
         containerListUsers.appendChild(createElementLi);
@@ -91,47 +87,77 @@ const deagregateTypes = (progressUser) => {
             for (partKey in unit.parts) {
                 let part = unit.parts[partKey];
                 let type = part.type;
+                //Datos de Quiz
                 if (type === 'quiz') {
                     quizCounter++;
                     if (part.completed === 1) {
                         completedQuizCounter++;
-                        quizAccumulatedScore = quizAccumulatedScore+part.score;
+                        quizAccumulatedScore = quizAccumulatedScore + part.score;
                     }
-                } 
-
+                }
+                //Datos de exercises
                 if (type === 'practice') {
                     exercisesCounter++;
                     if (part.completed === 1) {
-                        completedExercisesCounter++;
+                        completedExercisesCounter = completedExercisesCounter + part.completed;
                     }
                 }
-
+                //Datos de read
                 if (type === 'read') {
                     readCounter++;
                     if (part.completed === 1) {
                         completedReadCounter++;
                     }
                 }
-
+                //Imprimiendo datos de Read
+                readCounterCohort.innerHTML = "";
+                completedReadStudent.innerHTML = "";
+                percentReadStudent.innerHTML = "";
+                let liReadCounter = document.createElement('li');
+                let licompletedRead = document.createElement('li');
+                let lipercentRead = document.createElement('li');
+                liReadCounter.innerHTML = readCounter;
+                readCounterCohort.appendChild(liReadCounter);
+                licompletedRead.innerHTML = completedReadCounter;
+                completedReadStudent.appendChild(licompletedRead);
+                lipercentRead.innerHTML = (completedReadCounter / readCounter) * 100;
+                percentReadStudent.appendChild(lipercentRead);
+                //Imprimiendo datos de Exercises
+                exercisesCounterCohort.innerHTML = "";
+                completedExercisesStudent.innerHTML = "";
+                percentExercisesStudent.innerHTML = "";
+                let liExercisesCounter = document.createElement('li');
+                let licompletedExercises = document.createElement('li');
+                let lipercentExercises = document.createElement('li');
+                liExercisesCounter.innerHTML = exercisesCounter;
+                exercisesCounterCohort.appendChild(liExercisesCounter);
+                licompletedExercises.innerHTML = completedExercisesCounter;
+                completedExercisesStudent.appendChild(licompletedExercises);
+                lipercentExercises.innerHTML = (completedExercisesCounter / exercisesCounter) * 100;
+                percentExercisesStudent.appendChild(lipercentExercises);
+                //Imprimiendo datos de Quiz
+                quizCounterCohort.innerHTML = "";
+                completedQuizStudent.innerHTML = "";
+                quizScoreStudent.innerHTML = "";
+                percentScoreStudent.innerHTML = "";
+                let liQuizCounter = document.createElement('li');
+                let liCompletedQuiz = document.createElement('li');
+                let liQuizScore = document.createElement('li');
+                let liPercentScore = document.createElement('li');
+                liQuizCounter.innerHTML = quizCounter;
+                quizCounterCohort.appendChild(liQuizCounter);
+                liCompletedQuiz.innerHTML = completedQuizCounter;
+                completedQuizStudent.appendChild(liCompletedQuiz);
+                liQuizScore.innerHTML = quizAccumulatedScore;
+                quizScoreStudent.appendChild(liQuizScore);
+                liPercentScore.innerHTML = (quizAccumulatedScore / quizCounter);
+                percentScoreStudent.appendChild(liPercentScore);
+                
             }
-        }        
+        } 
     } catch (error) {
         console.log('Data Incompleta');
     }
-    console.log('Datos de Lectura');
-    console.log('# total de lecturas presentes en el cohort: ' + readCounter);
-    console.log('# de lecturas completadas por el usuario: ' + completedReadCounter);
-    console.log('% de lecturas completadas: ' + (completedReadCounter/readCounter)*100);
-    console.log('Datos de Ejercicios');
-    console.log('# total de ejercicios autocorregidos en el cohort: ' + exercisesCounter);
-    console.log('# de ejercicios autocorregidos completadas por el usuario: ' + completedExercisesCounter);
-    console.log('% de ejercicios autocorregidos completadas: ' + (completedExercisesCounter/exercisesCounter)*100);
-    console.log('Datos de Quiz');
-    console.log('# total de quizzes en cursos del cohort: ' + quizCounter);
-    console.log('# de quizzes completadas por el usuario: ' + completedQuizCounter);
-    console.log('Suma de score de los quizzes completados: ' + quizAccumulatedScore);
-    console.log('Promedio de puntuaciones en quizzes completados: ' + (quizAccumulatedScore));
-
 };
 
 const createContainerForScore = (scoreForStudent) => {
@@ -161,7 +187,7 @@ const searchStudent = (student) => {
                     arrayNameUser.push(user); //adicionar elemento al array
                 }
             });
-            paintUsersFromCohort(arrayNameUser);
+            paintUsersCohort(arrayNameUser);
         })
 };
 
