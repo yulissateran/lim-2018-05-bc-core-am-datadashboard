@@ -4,7 +4,6 @@ const cohortLim2018_03_precore_pw = '../data/cohorts/lim-2018-03-pre-core-pw/use
 const progressOfUsersOfLim2018_03_precore_pw = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const profileUsers = document.getElementById('profile-users');
 const selectorOfCohorts = document.getElementById('selectorOfCohorts');
-//arreglar variables
 const cohortsBtn = document.getElementById('cohorts-btn');
 const titleListStudent = document.getElementById('list-students');
 const searchStudents = document.getElementById('search-students');
@@ -29,6 +28,7 @@ selectorOfCohorts.addEventListener('change', (e) => {
         }
  
 });
+//evento para
 btnSearch.addEventListener('click', (e) => {
         e.preventDefault();
         searchStudent(searchName.value);
