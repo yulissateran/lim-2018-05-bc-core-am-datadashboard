@@ -3,42 +3,71 @@ window.data = {
     const usersWithStats = users;
     const keysProgress = Object.keys(progress);
     let scoreOfCohort =0;
-    let promedioCohort=0;
+    let promedioCohort='';
     try{ 
       for (const user of usersWithStats){
        for(const id of keysProgress){
           if(user.id === id){
             //exercises
-           if(Object.entries(progress[id]).length !== 0){ 
-            console.log(progress[id])
-            user['stats']={};
-            user.stats['exercises']={};
-            user.stats.exercises['total'] = (Object.keys(progress[id][courses]['units']['02-variables-and-data-types']['parts']['06-exercises']['exercises'])).length;
-            user.stats.exercises['completed'] = progress[id][courses]['units']['02-variables-and-data-types']['parts']['06-exercises']['completed']
-            user.stats.exercises['percent'] = ((user.stats.exercises['completed'] / user.stats.exercises['total'])*100);
-            user.stats['percent']= progress[id][courses]['percent'];
-            scoreOfCohort += user.stats.percent;
-            promedioCohort += scoreOfCohort / usersWithStats.length; 
+           if(Object.entries(progress[id]).length !== 0){
+
+             user['stats'] = {};
+             user.stats['percent'] = progress[id][courses]['percent'];
+             user.stats['exercises'] = {};
+             user.stats['reads'] = {};
+             user.stats['quizzes'] = {};
+             user.stats.quizzes['total'] = 0;
+             user.stats.quizzes['completed'] = 0;
+             user.stats.quizzes['percent'] = 0
+             user.stats.reads['total'] = 0;
+             user.stats.reads['completed'] = 0;
+             user.stats.reads['percent'] = 0;
+             user.stats.exercises['total'] = (Object.keys(progress[id][courses]['units']['02-variables-and-data-types']['parts']['06-exercises']['exercises'])).length;
+            user.stats.exercises['completed'] = progress[id][courses]['units']['02-variables-and-data-types']['parts']['06-exercises']['exercises']['01-coin-convert']['completed'] +
+                                                 progress[id][courses]['units']['02-variables-and-data-types']['parts']['06-exercises']['exercises']['02-restaurant-bill']['completed'];
+            user.stats.exercises['percent'] = ((progress[id][courses]['units']['02-variables-and-data-types']['parts']['06-exercises']['completed'])*100);
+            
             //reads
+              
+             
+             const unitsOfCourses = progress[id][courses].units;  // console.log(unitsOfCourses)
+            
+             for (unit in unitsOfCourses) {
+               let partsOfUnit = unitsOfCourses[unit].parts;       //console.log(partsOfUnit)
+               for (part in partsOfUnit) {
+                 let propertysOfTheParts = partsOfUnit[part];      console.log(propertysOfTheParts.completed)
+                 let type = propertysOfTheParts.type;              //console.log(type)
+                    if (type === 'quiz'){
+                      if (propertysOfTheParts.completed === 1) { }
+                    } if (type === 'practice') {
+                      // console.log(propertysOfTheParts.completed);
+                      if (propertysOfTheParts.completed === 1) {  }
+                    }  if (type === 'read') {
+                      if (propertysOfTheParts.completed === 1) { }
+                    }
+                  }
+                } 
+
             // user.stats['reads']= progress[id][courses]['percent'];
-           } else if (Object.entries(progress[id]).length === 0){
+            } else if (Object.entries(progress[id]).length === 0){
              user['stats'] = {};
              user.stats['exercises'] = {};
              user.stats.exercises['total'] = 2;
              user.stats.exercises['completed'] = 0;
              user.stats.exercises['percent'] = 0;
-             user.stats['percent'] = 0;
-            console.log(user)
-          }
+             user.stats['percent'] = 0;       
+             // console.log(user)
+            }
+            scoreOfCohort += user.stats.percent;
           } 
+         
         }
       }
+       promedioCohort += 'promedio del cohort:   ' + scoreOfCohort / usersWithStats.length;
+      //  console.log(scoreOfCohort);
+      //  console.log(promedioCohort) 
     }catch(err){console.log(err.message) }
-    console.log(usersWithStats);
-    return usersWithStats;
-       
-       console.log(scoreOfCohort);
-       console.log(promedioCohort);  
+    return usersWithStats; 
   },
   dato() { }
 }

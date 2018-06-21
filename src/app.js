@@ -45,15 +45,15 @@ const getListOfCohorts = () => {
          const usersWithState= data.computeUsersStats(users, progress, courses);
           console.log(usersWithState);
          try{for (const user of usersWithState) {
-           console.log(user);
+          //  console.log(use}r);
            profileUser = document.createElement('div');
            nameUser = document.createElement('h6')
            exercisesPercent= document.createElement('p')
            nameUser.innerText=user.name;
-           exercisesPercent.innerHTML = 'puntuación en ejercicios:  '+user.stats.exercises.percent + '%';
-           console.log(user.stats.exercises.percent);
-           console.log(nameUser);
-           console.log(exercisesPercent.value);
+           exercisesPercent.innerHTML = 'ejercicios completados:  ' + user.stats.exercises['percent'] + '%';
+          //  console.log(user.stats.exercises.percent);
+          //  console.log(nameUser);
+          //  console.log(exercisesPercent.innerText);
            profileUser.appendChild(nameUser);
            profileUser.appendChild(exercisesPercent);
            profileUsers.appendChild(profileUser);
@@ -61,8 +61,6 @@ const getListOfCohorts = () => {
         }catch(err){
           console.log(err.message)
         }
-
-
         })
       })
     };
