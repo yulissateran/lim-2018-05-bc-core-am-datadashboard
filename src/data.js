@@ -1,3 +1,77 @@
+window.data = {
+  computeUsersStats(users, progress, courses) {
+    const usersWithStats = users;
+    const keysProgress = Object.keys(progress);
+    let scoreOfCohort =0;
+    let promedioCohort=0;
+    try{ 
+      for (const user of usersWithStats){
+       for(const id of keysProgress){
+          if(user.id === id){
+            //exercises
+           if(Object.entries(progress[id]).length !== 0){ 
+            console.log(progress[id])
+            user['stats']={};
+            user.stats['exercises']={};
+            user.stats.exercises['total'] = (Object.keys(progress[id][courses]['units']['02-variables-and-data-types']['parts']['06-exercises']['exercises'])).length;
+            user.stats.exercises['completed'] = progress[id][courses]['units']['02-variables-and-data-types']['parts']['06-exercises']['completed']
+            user.stats.exercises['percent'] = ((user.stats.exercises['completed'] / user.stats.exercises['total'])*100);
+            user.stats['percent']= progress[id][courses]['percent'];
+            scoreOfCohort += user.stats.percent;
+            promedioCohort += scoreOfCohort / usersWithStats.length; 
+            //reads
+            // user.stats['reads']= progress[id][courses]['percent'];
+           } else if (Object.entries(progress[id]).length === 0){
+             user['stats'] = {};
+             user.stats['exercises'] = {};
+             user.stats.exercises['total'] = 2;
+             user.stats.exercises['completed'] = 0;
+             user.stats.exercises['percent'] = 0;
+             user.stats['percent'] = 0;
+            console.log(user)
+          }
+          } 
+        }
+      }
+    }catch(err){console.log(err.message) }
+    console.log(usersWithStats);
+    return usersWithStats;
+       
+       console.log(scoreOfCohort);
+       console.log(promedioCohort);  
+  },
+  dato() { }
+}
+
+ //ejercicios
+    // let idOfUser = users[0].id 
+    // let ejercicioshechos =  progress[idOfUser][courses]['units']['02-variables-and-data-types']['parts']['06-exercises']['completed'];
+    // let objetoejercicios = progress[idOfUser][courses]['units']['02-variables-and-data-types']['parts']['06-exercises']['exercises'];
+    // let llavesejercicios = (Object.keys(progress[idOfUser][courses]['units']['02-variables-and-data-types']['parts']['06-exercises']['exercises'])).length;
+    // console.log(llavesejercicios);
+    // let ejerciciosexistentes= llavesejercicios.length
+    // let porcentajeejercicios = ((ejercicioshechos/ejerciciosexistentes)*100 +'%');
+
+//ejercicios 2
+//  user['stats']={};
+//         user.stats['exercises']={};
+//         user.stats.exercises['total'] = (Object.keys(progress[user.id][courses]['units']['02-variables-and-data-types']['parts']['06-exercises']['exercises'])).length;
+//         user.stats.exercises['completed'] = progress[user.id][courses]['units']['02-variables-and-data-types']['parts']['06-exercises']['completed']
+//         user.stats.exercises['percent'] = ((user.stats.exercises['completed'] / user.stats.exercises['total'])*100);
+//         user.stats['percent']= progress[user.id][courses]['percent'];
+//         user.stats['reads']= progress[user.id][courses]['percent'];
+//         let llavesdelaspartes =Object.keys(progress[user.id][courses]['units']['02-variables-and-data-types']['parts']);
+//         console.log(llavesdelaspartes);
+
+
+
+
+
+
+
+
+
+/*
 //Creando la lista de cohorts 
 const getListOfCohorts = () => {
     fetch(CohortsOfLaboratoria, { method: 'GET' })
@@ -95,3 +169,4 @@ const getListOfCohorts = () => {
     containerListProgress.appendChild(createElement_Li);
     
   }
+  */

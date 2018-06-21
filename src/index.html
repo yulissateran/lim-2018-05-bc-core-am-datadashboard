@@ -16,8 +16,10 @@
   </main>
   <form class="search-students" action="">
    <button id="cohorts-btn">Cohorts</button>
-   <select id='selectorOfCohorts' class="hidden"></select>
-   <div id="search-students"class="search-students hidden">
+   <select id ="selectorOfCohorts" class = "hidden"></select>
+   <div id = "search-students" class = "search-students hidden">
+    <h2>Cursos de este cohort:</h2>
+    <p id="courses-of-the-cohort"></p>
     <h2 id="list-students" class="list-students hidden">Lista de alumnas</h2>
     <button id="btnSearch">Buscar</button>
     <input id="searchName"/><!--
@@ -25,12 +27,15 @@
     <button id="prueba">Prueba</button>-->
     <br/>
    </div>
-   <div >
-    <ul class="listStudents" id="containerListUsers"></ul>
-    <ul class="listProgress" id="containerListProgress"></ul>
-   </div> 
+   <section id = "profile-users">
+
+   </section> 
   </form>
-  <script src="data.js"></script>
-  <script src="main.js"></script>
+<script src="data.js"></script>
+  <script src="app.js"></script>
+<script src="main.js"></script>
+
+  
+
  </body>
 </html>
