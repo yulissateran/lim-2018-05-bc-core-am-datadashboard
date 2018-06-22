@@ -25,6 +25,7 @@ const percentExercisesStudent = document.getElementById('percent-exercises');
 const quizCounterCohort = document.getElementById('quiz-counter');
 const completedQuizStudent = document.getElementById('completed-quiz');
 const quizScoreStudent = document.getElementById('quiz-score');
+const percentQuizStudent = document.getElementById('percent-quiz');
 const percentScoreStudent = document.getElementById('percent-score');
 
 // Evento para el boton cohorts que liste los cohorts
@@ -98,10 +99,12 @@ percentExercisesStudent.appendChild(lipercentExercises);
 quizCounterCohort.innerHTML = "";
 completedQuizStudent.innerHTML = "";
 quizScoreStudent.innerHTML = "";
+percentQuizStudent.innerHTML = "";
 percentScoreStudent.innerHTML = "";
 let liQuizCounter = document.createElement('li');
 let liCompletedQuiz = document.createElement('li');
 let liQuizScore = document.createElement('li');
+let liPercentQuiz = document.createElement('li');
 let liPercentScore = document.createElement('li');
 liQuizCounter.innerHTML = 'Cantidad de Quiz: ' + quizCounter;
 quizCounterCohort.appendChild(liQuizCounter);
@@ -109,7 +112,9 @@ liCompletedQuiz.innerHTML = 'Quiz Completados: ' + completedQuizCounter;
 completedQuizStudent.appendChild(liCompletedQuiz);
 liQuizScore.innerHTML = 'Score: ' + quizAccumulatedScore;
 quizScoreStudent.appendChild(liQuizScore);
-liPercentScore.innerHTML = 'Promedio de Quiz: ' + Math.round((quizAccumulatedScore / quizCounter));
+liPercentQuiz.innerHTML = 'Porcentaje de Quiz Completados: ' + Math.round((completedQuizCounter / quizCounter)*100);
+percentQuizStudent.appendChild(liPercentQuiz);
+liPercentScore.innerHTML = 'Promedio de Quiz: ' + Math.round((quizAccumulatedScore / completedQuizCounter));
 percentScoreStudent.appendChild(liPercentScore);
 
 }
