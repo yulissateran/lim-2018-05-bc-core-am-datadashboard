@@ -1,6 +1,14 @@
-header, h2{
+body{
+  font-family: museo-sans, Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #2b2b2b;
+  
+}
+header{
+  text-align: center;
   padding: 5px; 
   margin: 10px;
+  background-color :#ffc107;
+
 }
 .listStudents,.listProgress {
  float: left;
