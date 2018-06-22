@@ -7,6 +7,8 @@ header{
   background-color: #ffc107;
   padding: 5px; 
   margin: 10px;
+  background-color :#ffc107;
+
 }
 .listStudents,.listProgress {
  float: left;
