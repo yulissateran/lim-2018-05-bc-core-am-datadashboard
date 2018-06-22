@@ -4,12 +4,11 @@ const searchStudents = document.getElementById('search-students');
 const btnSearch = document.getElementById('btnSearch'); 
 let searchName = document.getElementById('searchName');
 // Evento para el boton cohorts que liste los cohorts
-cohortsBtn.addEventListener('click', (e) => {
+document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
-    selectorOfCohorts.classList.remove('hidden');
-    
-     getListOfCohorts();
-});
+    //se llenan las opciones
+    getListOfCohorts();
+})
 // Evento para selector, que crea la lista de alumnas según el cohort
 selectorOfCohorts.addEventListener('change', (e) => {
     e.preventDefault();

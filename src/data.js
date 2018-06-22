@@ -39,17 +39,17 @@ window.data = {
              user.stats['reads'] = {};
               user.stats.reads['total'] = readsTotals;
               user.stats.reads['completed'] = readsCompleted;
-              user.stats.reads['percent'] = (readsCompleted / readsTotals)*100;
+              user.stats.reads['percent'] = Math.round((readsCompleted / readsTotals)*100);
              user.stats['quizzes'] = {};
               user.stats.quizzes['total'] = quizzsTotal;
               user.stats.quizzes['completed'] = quizzCompleted;
-              user.stats.quizzes['percent'] = (quizzCompleted / quizzsTotal)*100;
+              user.stats.quizzes['percent'] = Math.round((quizzCompleted / quizzsTotal)*100);
              user.stats['percent'] = progress[id][courses]['percent'];
              user.stats['exercises'] = {};
               user.stats.exercises['total'] = (Object.keys(unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['exercises'])).length;
               user.stats.exercises['completed'] = unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['exercises']['01-coin-convert']['completed'] +
                 unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['exercises']['02-restaurant-bill']['completed'];
-              user.stats.exercises['percent'] = ((unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['completed']) * 100);
+              user.stats.exercises['percent'] = Math.round(((unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['completed']) * 100));
 
 
             // user.stats['reads']= progress[id][courses]['percent'];
@@ -83,7 +83,7 @@ window.data = {
      
      promedioPercentOfQuizzs = scoreOfCohort / studentQuantiti;
      containerOfPercentGeneral = document.getElementById('container-of-percent-general');
-     containerOfPercentGeneral.innerHTML = 'porcentaje general de ejercicios:   ' + promedioPercentOfQuizzs;
+     containerOfPercentGeneral.innerHTML = 'porcentaje promedio de ejercicios:   ' + Math.round(promedioPercentOfQuizzs) + '%';
       //  console.log(scoreOfCohort);
      console.log(promedioPercentOfQuizzs) 
     }catch(err){console.log(err.message) }

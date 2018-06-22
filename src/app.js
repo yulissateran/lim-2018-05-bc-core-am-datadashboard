@@ -55,7 +55,7 @@ const getListOfCohorts = () => {
                    readsPercent = document.createElement('p');
                    readsPercent.innerHTML = 'Lecturas:   ' + user.stats.reads['percent']+ '%';
                    quizzPercent = document.createElement('p'); 
-                   quizzPercent.innerHTML = 'Quizz:    ' + user.stats.quizzes['percent'] + '%';
+                   quizzPercent.innerHTML = 'Quizz:    ' + (user.stats.quizzes)['percent'] + '%';
                    profileUser.appendChild(exercisesPercent);
                    profileUser.appendChild(readsPercent);
                    profileUser.appendChild(quizzPercent);
