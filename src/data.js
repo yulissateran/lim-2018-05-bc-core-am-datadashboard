@@ -45,15 +45,16 @@ const paintUsersCohort = (arrayOfUsersOfOneCohort) => {
             createElement_A.setAttribute('href', 'javascript;');
         createElement_A.addEventListener('click', (e) => {
             e.preventDefault();
-            getUsersProgress(user.id);
-            prueba.classList.remove('hidden');
+            getUsersProgress(user);
+            getTitleDatos();
+
         });
         createElementLi.appendChild(createElement_A);
         containerListUsers.appendChild(createElementLi);
     });
 }
 //Traer progreso
-const getUsersProgress = (idStudent) => {
+const getUsersProgress = (Student) => {
     fetch(progressOfUsersOfLim2018_03_precore_pw, { method: 'GET' })
         .then((response) => {
             if (response.status !== 200) {
@@ -62,13 +63,15 @@ const getUsersProgress = (idStudent) => {
             return response.json();
         })
         .then((progressStudents) => {
-            let progressUser = progressStudents[idStudent];
+            let progressUser = progressStudents[Student.id];
             deagregateTypes(progressUser);
+            showStudentInfo(Student.name);
         })
 };
 
 const deagregateTypes = (progressUser) => {
     let intro = progressUser['intro'];
+    let percentCohortStudent = "";
     //contadores quizzes
     let quizCounter = 0;
     let completedQuizCounter = 0;
@@ -84,92 +87,48 @@ const deagregateTypes = (progressUser) => {
         //recorremos las unidades
         for (unitKey in intro.units) {
             let unit = intro.units[unitKey];
+            percentCohortStudent = intro.percent;
+            //console.log('percent ' + percentCohortStudent)
             for (partKey in unit.parts) {
                 let part = unit.parts[partKey];
                 let type = part.type;
-                //Datos de Quiz
-                if (type === 'quiz') {
-                    quizCounter++;
-                    if (part.completed === 1) {
-                        completedQuizCounter++;
-                        quizAccumulatedScore = quizAccumulatedScore + part.score;
+
+                    //Datos de Quiz
+                    if (type === 'quiz') {
+                        quizCounter++;
+                        if (part.completed === 1) {
+                            completedQuizCounter++;
+                            quizAccumulatedScore += part.score;
+                        }
+                    }
+
+                    //Datos de read
+                    if (type === 'read') {
+                        readCounter++;
+                        if (part.completed === 1) {
+                            completedReadCounter++;
+                        }
+                    }
+
+                    //Datos de exercises
+                    for (exercisesKey in part.exercises) {
+                        let exercise = part.exercises[exercisesKey];
+                    if (type === 'practice') {
+                        exercisesCounter++;
+                        if (exercise.completed === 1) {
+                            completedExercisesCounter += exercise.completed;
+                        }
                     }
                 }
-                //Datos de exercises
-                if (type === 'practice') {
-                    exercisesCounter++;
-                    if (part.completed === 1) {
-                        completedExercisesCounter = completedExercisesCounter + part.completed;
-                    }
-                }
-                //Datos de read
-                if (type === 'read') {
-                    readCounter++;
-                    if (part.completed === 1) {
-                        completedReadCounter++;
-                    }
-                }
-                //Imprimiendo datos de Read
-                readCounterCohort.innerHTML = "";
-                completedReadStudent.innerHTML = "";
-                percentReadStudent.innerHTML = "";
-                let liReadCounter = document.createElement('li');
-                let licompletedRead = document.createElement('li');
-                let lipercentRead = document.createElement('li');
-                liReadCounter.innerHTML = readCounter;
-                readCounterCohort.appendChild(liReadCounter);
-                licompletedRead.innerHTML = completedReadCounter;
-                completedReadStudent.appendChild(licompletedRead);
-                lipercentRead.innerHTML = (completedReadCounter / readCounter) * 100;
-                percentReadStudent.appendChild(lipercentRead);
-                //Imprimiendo datos de Exercises
-                exercisesCounterCohort.innerHTML = "";
-                completedExercisesStudent.innerHTML = "";
-                percentExercisesStudent.innerHTML = "";
-                let liExercisesCounter = document.createElement('li');
-                let licompletedExercises = document.createElement('li');
-                let lipercentExercises = document.createElement('li');
-                liExercisesCounter.innerHTML = exercisesCounter;
-                exercisesCounterCohort.appendChild(liExercisesCounter);
-                licompletedExercises.innerHTML = completedExercisesCounter;
-                completedExercisesStudent.appendChild(licompletedExercises);
-                lipercentExercises.innerHTML = (completedExercisesCounter / exercisesCounter) * 100;
-                percentExercisesStudent.appendChild(lipercentExercises);
-                //Imprimiendo datos de Quiz
-                quizCounterCohort.innerHTML = "";
-                completedQuizStudent.innerHTML = "";
-                quizScoreStudent.innerHTML = "";
-                percentScoreStudent.innerHTML = "";
-                let liQuizCounter = document.createElement('li');
-                let liCompletedQuiz = document.createElement('li');
-                let liQuizScore = document.createElement('li');
-                let liPercentScore = document.createElement('li');
-                liQuizCounter.innerHTML = quizCounter;
-                quizCounterCohort.appendChild(liQuizCounter);
-                liCompletedQuiz.innerHTML = completedQuizCounter;
-                completedQuizStudent.appendChild(liCompletedQuiz);
-                liQuizScore.innerHTML = quizAccumulatedScore;
-                quizScoreStudent.appendChild(liQuizScore);
-                liPercentScore.innerHTML = (quizAccumulatedScore / quizCounter);
-                percentScoreStudent.appendChild(liPercentScore);
-                
             }
-        } 
+        }
     } catch (error) {
-        console.log('Data Incompleta');
+        console.log('Error')
     }
+    //console.log('percent ' + percentCohortStudent);
+    printData(percentCohortStudent, quizCounter, completedQuizCounter, quizAccumulatedScore, readCounter, completedReadCounter, exercisesCounter, completedExercisesCounter);
+
 };
-
-const createContainerForScore = (scoreForStudent) => {
-    containerListProgress.innerHTML = "";
-    let createElement_Li = document.createElement('li');
-    createElement_Li.innerText = scoreForStudent;
-    let createElementP = document.createElement('p');
-    createElementP.innerText = "Porcentaje de completidud de todos los cursos";
-    containerListProgress.appendChild(createElementP);
-    containerListProgress.appendChild(createElement_Li);
-
-}
 
 //Buscar estudiantes por nombre
 const searchStudent = (student) => {
