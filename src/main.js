@@ -1,8 +1,7 @@
-const cohortsBtn = document.getElementById('cohorts-btn');
-const titleListStudent = document.getElementById('list-students');
 const searchStudents = document.getElementById('search-students');
 const btnSearch = document.getElementById('btnSearch'); 
 let searchName = document.getElementById('searchName');
+const containerDataUsers = document.getElementById('container-data-users')
 // Evento para el boton cohorts que liste los cohorts
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
@@ -13,19 +12,21 @@ document.addEventListener('DOMContentLoaded', (e) => {
 selectorOfCohorts.addEventListener('change', (e) => {
     e.preventDefault();
     if (selectorOfCohorts.value === 'lim-2018-03-pre-core-pw'){
-        getNameUsersOfCohort(selectorOfCohorts.value);
-        // getNamesOfCoursesByCohort(selectorofCohorts.value)
+        getNameUsersOfCohort();
         searchStudents.classList.remove('hidden');
-        titleListStudent.classList.remove('hidden');}else{
+    
+        containerDataUsers.classList.remove('hidden');
+        tablePercentUser.classList.remove('hidden')
+    }else{
             alert('aún no hay datos de este cohort')
         }
  
 });
-//evento para
-btnSearch.addEventListener('click', (e) => {
-        e.preventDefault();
-        searchStudent(searchName.value);
-    });
+// //evento para
+// btnSearch.addEventListener('click', (e) => {
+//         e.preventDefault();
+//         searchStudent(searchName.value);
+//     });
 
 // yuli recuerda guardar este ejemplo
 // const perros = [
