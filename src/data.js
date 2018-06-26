@@ -1,5 +1,5 @@
-window.data = {
-  computeUsersStats(users, progress, courses) {
+
+ window.computeUsersStats=(users, progress, courses) =>{
     const usersWithStats = users;
     const keysProgress = Object.keys(progress);
     let scoreOfCohortInExercises =0;
@@ -8,7 +8,7 @@ window.data = {
    try{ 
       for (const user of usersWithStats){
         for(const id of keysProgress){
-          if(user.id === id && user.role === 'student'){
+          if(user.id === id ){
             let quizzsTotal = 0;
             let quizzCompleted = 0;
             let quizzScoreSum = 0;
@@ -46,7 +46,7 @@ window.data = {
               user.stats.quizzes['completed'] = quizzCompleted;
               user.stats.quizzes['percent'] = Math.round((quizzCompleted / quizzsTotal)*100);
               user.stats.quizzes['scoreSum']= quizzScoreSum;
-              user.stats.quizzes['scoreAvg'] = Math.round((quizzScoreSum / quizzCompleted)*100);
+              user.stats.quizzes['scoreAvg'] = Math.round((quizzScoreSum / quizzCompleted));
               user.stats['percent'] = progress[id][courses]['percent'];
               user.stats['exercises'] = {};
               user.stats.exercises['total'] = (Object.keys(unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['exercises'])).length;
@@ -70,18 +70,70 @@ window.data = {
               user.stats.exercises['percent'] = 0;
             }
             scoreOfCohortInExercises += user.stats.exercises.percent;
-            console.log(quizzScoreSum );
+            // console.log(quizzScoreSum );
           } 
          }
       }
     promedioPercentOfExercises = scoreOfCohortInExercises / studentQuantiti;
-     containerOfPercentGeneral = document.getElementById('container-of-percent-general');
-     containerOfPercentGeneral.innerHTML = 'porcentaje promedio de ejercicios:   ' + Math.round(promedioPercentOfExercises) + '%';
-     console.log(promedioPercentOfExercises) 
+    //  containerOfPercentGeneral = document.getElementById('container-of-percent-general');
+    //  containerOfPercentGeneral.innerHTML = 'porcentaje promedio de ejercicios:   ' + Math.round(promedioPercentOfExercises) + '%';
+    //  console.log(promedioPercentOfExercises) 
     }catch(err){console.log(err.message) }
-    console.log(usersWithStats)
+    // console.log(usersWithStats)
     return usersWithStats; 
   }
-}
 
-console.log(data);
+
+window.sortUsers = (users)=>{
+  reverseGeneral(users);
+  // const arraydeestudiantes=[]
+  // users.sort( sortAlphabetic(users,users))
+    for (const user of users) {
+      if (user.role === 'student') {
+        tablePercentUser.innerHTML +=
+          `<tr>
+                <td>${user.name}</td>
+                <td>${user.stats.exercises.percent}%</td> 
+                <td>${user.stats.reads.percent}%</td> 
+                <td>${user.stats.quizzes.percent}%</td>
+                <td>${user.stats.percent}</td>
+              </tr>`
+      };
+    };
+  
+}
+const Alphabetic = (users)=>{
+  users.sort((a, b)=> {
+    var x = a.name.toLowerCase();
+    var y = b.name.toLowerCase();
+    if (x < y) { return -1; }
+    if (x > y) { return 1; }
+    return 0;
+  })}
+  const reverseAlphabetic=(users)=>{
+    users.sort((a, b) => {
+      var x = a.name.toLowerCase();
+      var y = b.name.toLowerCase();
+      if (x < y) { return 1; }
+      if (x > y) { return -1; }
+      return 0;
+    })
+  }
+const completedGeneral=(users)=>{
+    users.sort((a, b)=> {
+      var x = a.stats.percent;
+      var y = b.stats.percent;
+      if (x < y) { return -1; }
+      if (x > y) { return 1; }
+      return 0;  });  
+} 
+
+const reverseGeneral = (users) => {
+  users.sort((a, b) => {
+    var x = a.stats.percent;
+    var y = b.stats.percent;
+    if (x < y) { return 1; }
+    if (x > y) { return -1; }
+    return 0;
+  });
+} 
