@@ -13,6 +13,7 @@ return estudiantes;
   return estudiantes;
 }
 
+
  window.computeUsersStats=(users, progress, courses) =>{
     const usersWithStats = users;
     const keysProgress = Object.keys(progress);
