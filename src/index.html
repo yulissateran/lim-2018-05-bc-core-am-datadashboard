@@ -11,36 +11,37 @@
     <header class="header">
       <h1>Laboratoria Datadashboard</h1>
     </header>
-    <main>
-      <form class="search-students" action="">
+    <form class="search-students" action="">
         <div id="cohorts" class="cohorts">
           <p>Cohorts</p>
           <select id="selectorOfCohorts" class=""></select>
         </div>
-        
-        <div id = "search-students" class = "search-students hidden">
+         <div id = "search-students" class = "search-students hidden">
           <p id="courses-of-the-cohort"></p>
           <!-- <button id="btnSearch">Buscar</button>
           <input id="searchName"/>-->
           <p id="container-of-percent-general"></p><br/>
         </div>
-        <div id = "container-data-users" class= "profile-users hidden">
-          <table>
-            <thead>
-              <caption>Lista de alumnas</caption>
-              <tr>
-                <th>Nombre</th>
-                <th>Ejercicios completados</th>
-                <th>Lecturas completadas</th>
-                <th>Quizz completados</th>
-                <th>Completitud Total</th>
-              </tr>
-            </thead>
-            <tbody id="table-percent-users" class = "profile-users hidden">
-            </tbody>
-          </table>
-        </div> 
-      </form>
+    </form>
+    <section></section>
+    <main id="table-percent-users" class="profile-users hidden" >
+       <div >
+       <table>
+          <thead>
+            <caption>Lista de alumnas</caption>
+            <tr>
+              <th>Nombre</th>
+              <th>Ejercicios completados</th>
+              <th>Lecturas completadas</th>
+              <th>Quizzes completados</th>
+              <th>Promquizzes</th>
+              <th>Completitud Total</th>
+            </tr>
+          </thead>
+          <tbody id="table-percent-users" class="profile-users hidden">
+          </tbody>
+        </table>
+      </div>
     </main>
     <script src="data.js"></script>
     <script src="app.js"></script>
