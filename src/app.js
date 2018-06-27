@@ -1,5 +1,5 @@
 const arrayOfFileOfData = ['../data/cohorts.json', '../data/cohorts/lim-2018-03-pre-core-pw/users.json', '../data/cohorts/lim-2018-03-pre-core-pw/progress.json']
-let tablePercentUser = document.getElementById('table-percent-users');
+let containerDataUsers = document.getElementById('container-data-users');
 const selectorOfCohorts = document.getElementById('selectorOfCohorts');
 let courses = '';
 //Creando la lista de cohorts 
@@ -20,8 +20,9 @@ const getNameUsersOfCohort = () => {
       fetch(arrayOfFileOfData[2], { method: 'GET' })         
       .then((response) =>  response.json())
       .then((progress) => {          
-        
-        sortUsers(computeUsersStats(users, progress, courses));
+        let orderBy ='prom-quizzes';
+        let orderDirection ='asd';
+        sortUsers(computeUsersStats(users, progress, courses),orderBy,orderDirection);
        
        
       })

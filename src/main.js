@@ -1,7 +1,7 @@
 const searchStudents = document.getElementById('search-students');
 const btnSearch = document.getElementById('btnSearch'); 
 let searchName = document.getElementById('searchName');
-const containerDataUsers = document.getElementById('container-data-users')
+
 // Evento para el boton cohorts que liste los cohorts
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
@@ -16,7 +16,7 @@ selectorOfCohorts.addEventListener('change', (e) => {
         searchStudents.classList.remove('hidden');
     
         containerDataUsers.classList.remove('hidden');
-        tablePercentUser.classList.remove('hidden')
+        // tablePercentUser.classList.remove('hidden')
     }else{
             alert('aún no hay datos de este cohort')
         }

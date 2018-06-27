@@ -1,4 +1,8 @@
-
+const validatorPromQuizes =(a,b)=>{
+  if(a !==0 && b !== 0){
+    return a/b;
+  }else{return 0;}
+}
  window.computeUsersStats=(users, progress, courses) =>{
     const usersWithStats = users;
     const keysProgress = Object.keys(progress);
@@ -46,7 +50,7 @@
               user.stats.quizzes['completed'] = quizzCompleted;
               user.stats.quizzes['percent'] = Math.round((quizzCompleted / quizzsTotal)*100);
               user.stats.quizzes['scoreSum']= quizzScoreSum;
-              user.stats.quizzes['scoreAvg'] = Math.round((quizzScoreSum / quizzCompleted));
+              user.stats.quizzes['scoreAvg'] = Math.round(validatorPromQuizes(quizzScoreSum,quizzCompleted));
               user.stats['percent'] = progress[id][courses]['percent'];
               user.stats['exercises'] = {};
               user.stats.exercises['total'] = (Object.keys(unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['exercises'])).length;
@@ -63,6 +67,8 @@
               user.stats.quizzes['total'] = 0;
               user.stats.quizzes['completed'] = 0;
               user.stats.quizzes['percent'] = 0;
+              user.stats.quizzes['scoreSum']= 0;
+              user.stats.quizzes['scoreAvg']=0;
               user.stats['percent'] = 0;
               user.stats['exercises'] = {};
               user.stats.exercises['total'] = 0;
@@ -70,7 +76,8 @@
               user.stats.exercises['percent'] = 0;
             }
             scoreOfCohortInExercises += user.stats.exercises.percent;
-            // console.log(quizzScoreSum );
+            console.log(quizzScoreSum);
+            console.log(quizzCompleted );
           } 
          }
       }
@@ -80,60 +87,98 @@
     //  console.log(promedioPercentOfExercises) 
     }catch(err){console.log(err.message) }
     // console.log(usersWithStats)
+    
     return usersWithStats; 
   }
 
 
-window.sortUsers = (users)=>{
-  reverseGeneral(users);
+window.sortUsers = (users,orderBy,orderDirection)=>{
+  sort(users,orderBy,orderDirection);
   // const arraydeestudiantes=[]
   // users.sort( sortAlphabetic(users,users))
     for (const user of users) {
       if (user.role === 'student') {
-        tablePercentUser.innerHTML +=
-          `<tr>
-                <td>${user.name}</td>
-                <td>${user.stats.exercises.percent}%</td> 
-                <td>${user.stats.reads.percent}%</td> 
-                <td>${user.stats.quizzes.percent}%</td>
-                <td>${user.stats.percent}</td>
-              </tr>`
+        let divUser = document.createElement('div').
+       
+        divUser +=  `
+                <h3>${user.name}</h3>
+                <ul>
+                  <li>ejercicios: ${user.stats.exercises.percent}</li> 
+                  <li>lecturas: ${user.stats.reads.percent}</li> 
+                  <li>quizzes: ${user.stats.quizzes.percent}</li>
+                  <li>promedio de quizzes: ${user.stats.quizzes.scoreAvg}</li>
+                  <li>completitud total: ${user.stats.percent}</li>
+                </ul>`
+              divUser+=classList.add("profile-user");
+              containerDataUsers.appenChild(divUser)
       };
-    };
-  
-}
-const Alphabetic = (users)=>{
-  users.sort((a, b)=> {
-    var x = a.name.toLowerCase();
-    var y = b.name.toLowerCase();
-    if (x < y) { return -1; }
-    if (x > y) { return 1; }
-    return 0;
-  })}
-  const reverseAlphabetic=(users)=>{
+
+    }}
+
+  const sort =(users,orderBy, orderDirection)=>{
     users.sort((a, b) => {
-      var x = a.name.toLowerCase();
-      var y = b.name.toLowerCase();
-      if (x < y) { return 1; }
-      if (x > y) { return -1; }
-      return 0;
+      let x ='';
+      let y='';
+      const asd = (x,y)=>{
+        if (x < y) { return -1; }
+        if (x > y) { return 1; }
+        return 0;}
+      const des =(x,y)=>{
+        if (x < y) { return 1; }
+        if (x > y) { return -1; }
+        return 0;
+      }
+      if(orderBy === 'name'){
+        x = a.name.toLowerCase();
+        y = b.name.toLowerCase();
+        if(orderDirection ==='asd'){
+         return asd(x,y);
+        }else if(orderDirection==='des'){
+         return des(x,y);
+        }
+      }
+      else if(orderBy === 'percent'){  
+       x = a.stats.percent;
+       y = b.stats.percent;
+        if(orderDirection==='asd'){
+          return asd(x,y);
+        }else if(orderDirection==='des'){
+          return des(x,y);
+        }}
+      else if(orderBy === 'exercises'){
+        x= a.stats.exercises.percent;
+        y=b.stats.exercises.percent;
+        if(orderDirection==='asd'){
+          return asd(x,y);
+        }else if(orderDirection==='des'){
+          return des(x,y);
+        }}
+      else if(orderBy === 'quizzes'){
+        x=a.stats.quizzes.percent;
+        y = b.stats.quizzes.percent;
+        if(orderDirection==='asd'){
+          return asd(x,y);
+        }else if(orderDirection==='des'){
+          return des(x,y);
+        }}
+      else if(orderBy === 'prom-quizzes'){
+        x= a.stats.quizzes.scoreAvg;
+        y= b.stats.quizzes.scoreAvg;
+        if(orderDirection==='asd'){
+          return asd(x,y);
+        }else if(orderDirection==='des'){
+          return des(x,y);
+        }}
+      else if(orderBy === 'lecturas'){
+        x =a.stats.reads.percent;
+        y =b.stats.reads.percent;
+        
+        if(orderDirection==='asd'){
+          return asd(x,y);
+        }else if(orderDirection==='des'){
+          return des(x,y);
+        }}
     })
   }
-const completedGeneral=(users)=>{
-    users.sort((a, b)=> {
-      var x = a.stats.percent;
-      var y = b.stats.percent;
-      if (x < y) { return -1; }
-      if (x > y) { return 1; }
-      return 0;  });  
-} 
-
-const reverseGeneral = (users) => {
-  users.sort((a, b) => {
-    var x = a.stats.percent;
-    var y = b.stats.percent;
-    if (x < y) { return 1; }
-    if (x > y) { return -1; }
-    return 0;
-  });
-} 
+ 
+  
