@@ -1,13 +1,14 @@
 const arrayOfFileOfData = ['../data/cohorts.json', '../data/cohorts/lim-2018-03-pre-core-pw/users.json', '../data/cohorts/lim-2018-03-pre-core-pw/progress.json']
 let tablePercentUser = document.getElementById('table-percent-users');
 const selectorOfCohorts = document.getElementById('selectorOfCohorts');
+let cohort = '';
 let courses = '';
 //Creando la lista de cohorts 
 const getListOfCohorts = () => {
   fetch(arrayOfFileOfData[0], { method: 'GET' })
   .then((response) => response.json())
   .then((cohorts) => {
-    const cohort = cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
+     cohort = cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
      courses = Object.keys(cohort.coursesIndex);
     cohorts.forEach(cohort => selectorOfCohorts.innerHTML+=`<option>${cohort.id}</option>`)
   })
@@ -19,16 +20,69 @@ const getNameUsersOfCohort = () => {
     .then((users) => {
       fetch(arrayOfFileOfData[2], { method: 'GET' })         
       .then((response) =>  response.json())
-      .then((progress) => {          
-        
-        sortUsers(computeUsersStats(users, progress, courses));
+      .then((progress) => {  
+        console.log(cohort)
+        console.log(courses);
+        const options = {
+                 cohort: cohort,
+              cohortData:{
+                  users:users,
+                    progress:{}
+              },
+                    orderBy:'',
+            orderDirection:'',
+             search:''
+
+}
+
+        let orderBy = 'quizzes';
+        let orderDirection = 'DES';
+        sortUsers(computeUsersStats(users, progress, courses),orderBy,orderDirection);
        
        
       })
     })
   };
 
+// const dataUsers = [
+//   {
+//     name: 'Guerrero',
+//     goles: 30,
+//   },
+//   {
+//     name: 'Flores',
+//     goles: 15,
+//   },
+//   {
+//     name: 'Carrillo',
+//     goles: 4,
+//   },
+//   {
+//     name: 'Carrillo',
+//     goles: 8,
+//   },
+//   {
+//     name: 'Farfán',
+//     goles: 15,
+//   },
+//   {
+//     name: 'Cueva',
+//     goles: 16,
+//   }
+// ]
 
+// // filtrar usuarios
+
+// const search = () => {
+//   const nuevoUsers = dataUsers.filter((user) => {
+//     return user.goles > 10
+//   });
+//   return nuevoUsers.forEach((user)=>{
+//     console.log(user.name)
+//   })
+// }
+
+// search();
 
 // const perros = [
 //   {

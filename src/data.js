@@ -1,3 +1,17 @@
+window.processCohortData = (options) =>{
+  const users = options.cohotData.users;
+  const progress = options.cohortData.progress;
+  const courses = options.cohort;
+  const orderBy = options.orderBy;
+  const orderDirection = options.orderDirection;
+  let students = computeUsersWithStats(users,progress,cohort);
+  estudiantes = sortUsers(estudiantes,orderBy,orderDirection);
+  if(options.search !== ''){
+estudiantes = filterUsers(estudiantes ,options.search)
+return estudiantes;
+  }
+  return estudiantes;
+}
 
  window.computeUsersStats=(users, progress, courses) =>{
     const usersWithStats = users;
@@ -84,10 +98,10 @@
   }
 
 
-window.sortUsers = (users)=>{
-  reverseGeneral(users);
-  // const arraydeestudiantes=[]
-  // users.sort( sortAlphabetic(users,users))
+window.sortUsers = (users,orderBy,orderDirection)=>{
+  
+  sort(users, orderBy, orderDirection);
+  users.filter(()=>{})
     for (const user of users) {
       if (user.role === 'student') {
         tablePercentUser.innerHTML +=
@@ -102,38 +116,89 @@ window.sortUsers = (users)=>{
     };
   
 }
-const Alphabetic = (users)=>{
-  users.sort((a, b)=> {
-    var x = a.name.toLowerCase();
-    var y = b.name.toLowerCase();
-    if (x < y) { return -1; }
-    if (x > y) { return 1; }
-    return 0;
-  })}
-  const reverseAlphabetic=(users)=>{
+
+  const sort=(users,orderBy, orderDirection)=>{
     users.sort((a, b) => {
-      var x = a.name.toLowerCase();
-      var y = b.name.toLowerCase();
-      if (x < y) { return 1; }
-      if (x > y) { return -1; }
-      return 0;
+      let x = '';
+      let y = '';
+      const asd = (x, y) => {
+        if (x < y) { return -1; }
+        if (x > y) { return 1; }
+        return 0;}
+      const des = (x, y) => {
+        if (x < y) { return 1; }
+        if (x > y) { return -1; }
+        return 0;}  
+    if (orderDirection === 'ASD') {
+      if(orderBy === 'name'){
+         x = a.name.toLowerCase();
+         y = b.name.toLowerCase();
+        return asd(x,y);
+       
+      }
+      if(orderBy==='completitud'){
+         x = a.stats.percent;
+         y = b.stats.percent;
+        return asd(x,y)
+      }
+      if (orderBy ==='ejercicios') { 
+        x = a.stats.exercises.completed;
+        y = b.stats.exercises.completed;
+        return asd(x, y)
+      }
+      if (orderBy === 'quizzes') {
+        x = a.stats.quizzes.completed;
+        y = b.stats.quizzes.completed;
+        return asd(x, y) 
+       }
+      if (orderBy === 'prom-quizzes') { 
+        x = a.stats.quizzes.scoreAvg;
+        y = b.stats.quizzes.scoreAvg;
+        return asd(x, y)
+      }
+      if (orderBy === 'lecturas') { 
+        x = a.stats.reads.completed;
+        y = b.stats.reads.completed;
+        return asd(x, y)
+      }
+      
+    }else if(orderDirection ==='DES'){
+      if (orderBy === 'name') {
+        x = a.name.toLowerCase();
+        y = b.name.toLowerCase();
+        return des (x, y);
+      }
+      if (orderBy === 'completitud') {
+        x = a.stats.percent;
+        y = b.stats.percent;
+        return des(x, y)
+      }
+      if (orderBy === 'ejercicios') { 
+        x = a.stats.exercises.completed;
+        y = b.stats.exercises.completed;
+        return des(x, y)
+      }
+      if (orderBy === 'quizzes') { 
+        x = a.stats.quizzes.completed;
+        y = b.stats.quizzes.completed;
+        return des(x, y)
+      }
+      if (orderBy === 'prom-quizzes') {
+        x = a.stats.quizzes.scoreAvg;
+        y = b.stats.quizzes.scoreAvg;
+        return des(x, y)
+      }
+      if (orderBy === 'lecturas') {
+        x = a.stats.reads.completed;
+        y = b.stats.reads.completed;
+        return des(x, y)
+       }
+        }
+     
     })
   }
-const completedGeneral=(users)=>{
-    users.sort((a, b)=> {
-      var x = a.stats.percent;
-      var y = b.stats.percent;
-      if (x < y) { return -1; }
-      if (x > y) { return 1; }
-      return 0;  });  
-} 
 
-const reverseGeneral = (users) => {
-  users.sort((a, b) => {
-    var x = a.stats.percent;
-    var y = b.stats.percent;
-    if (x < y) { return 1; }
-    if (x > y) { return -1; }
-    return 0;
-  });
-} 
+
+
+
+
