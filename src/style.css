@@ -1,40 +1,68 @@
-.sedes .cohorts{
-margin:20px;
-}
-.profile-users{
-  width: 80%;
-}
-table {
-    width:60%;
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 2px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color:whitesmoke;
-}
 body{
   color: #2b2b2b;
   font-family: museo-sans, Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin:0px;
 }
-header{
-  text-align: center;
-  background-color: #ffc107;
-  padding: 5px; 
-  margin: 10px;
-  background-color :#ffc107;
+.conten{
+  width: 80%;
+}
 
+header{
+  color: rgba(0, 0, 0, 0.87);
+  width: 100%; 
+  text-align: center;
+  padding: 0.5px;
+  background-color :#ffc107;
+  width: 100%;
+  box-sizing: border-box;
+  flex-direction: column;
+  font-family: museo-sans, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 145%;
 }
 .hidden{
    display: none;
 }
-.search-students{
- padding: 10px 9px 5px 9px;
+.select-cohorts{
+  margin: 0% auto;
+  height:3em ;
+  border-radius:10px;
+  border-color: #F2F3F4 ;
+  line-height: 145%;
+  background-color: #FBFCFC  ;   
+} 
+.container-profiles-users{
+  width: 100%;
 }
+.div-user{
+  float: left;
+  background-color: #EBF5FB;
+  width: 160px;
+  height: 150px;
+  border-style: none;
+  /* border-color:  #0D47A1    ; */
+  color: #2b2b2b;
+  margin: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 10px;
+  float: left;
+}
+.ul-progress{
+  flex: 1 1 auto;
+  list-style: none;
+}
+.li-progress{
+  list-style: none;
+  /* list-style-type: none; */
+  margin-right: 0%;
+}
+.menu{
+  background-color: #fff;
+  height: 100%;
+  border-color: #2b2b2b;
+  width:25%;
+  position: relative;
+}
+
