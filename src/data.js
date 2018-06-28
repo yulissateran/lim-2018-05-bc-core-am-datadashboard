@@ -1,3 +1,11 @@
+const validatorPromQuizzes=(a,b)=>{
+  if(a !==0){
+   return a/b;
+  }else if(a === 0 ){
+   return 0
+  }
+}
+
 window.processCohortData = (options) =>{
   const users = options.cohotData.users;
   const progress = options.cohortData.progress;
@@ -61,7 +69,7 @@ return estudiantes;
               user.stats.quizzes['completed'] = quizzCompleted;
               user.stats.quizzes['percent'] = Math.round((quizzCompleted / quizzsTotal)*100);
               user.stats.quizzes['scoreSum']= quizzScoreSum;
-              user.stats.quizzes['scoreAvg'] = Math.round((quizzScoreSum / quizzCompleted));
+              user.stats.quizzes['scoreAvg'] = Math.round(validatorPromQuizzes(quizzScoreSum,quizzCompleted));
               user.stats['percent'] = progress[id][courses]['percent'];
               user.stats['exercises'] = {};
               user.stats.exercises['total'] = (Object.keys(unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['exercises'])).length;
@@ -78,6 +86,8 @@ return estudiantes;
               user.stats.quizzes['total'] = 0;
               user.stats.quizzes['completed'] = 0;
               user.stats.quizzes['percent'] = 0;
+              user.stats.quizzes['scoreSum']=0;
+              user.stats.quizzes['scoreAvg']=0;
               user.stats['percent'] = 0;
               user.stats['exercises'] = {};
               user.stats.exercises['total'] = 0;
@@ -102,17 +112,39 @@ return estudiantes;
 window.sortUsers = (users,orderBy,orderDirection)=>{
   
   sort(users, orderBy, orderDirection);
-  users.filter(()=>{})
+  // users.filter(()=>{})
     for (const user of users) {
       if (user.role === 'student') {
-        tablePercentUser.innerHTML +=
-          `<tr>
-                <td>${user.name}</td>
-                <td>${user.stats.exercises.percent}%</td> 
-                <td>${user.stats.reads.percent}%</td> 
-                <td>${user.stats.quizzes.percent}%</td>
-                <td>${user.stats.percent}</td>
-              </tr>`
+       
+        let div = document.createElement('div');  
+        let name = document.createElement('h3');
+        let list = document.createElement('ul');
+        let exercises = document.createElement('li');
+        let reads = document.createElement('li');
+        let quizzes = document.createElement('li');
+        let average = document.createElement('li');
+        let percent = document.createElement('li');
+        name.innerHTML =user.name;
+        exercises.innerHTML = `Ejercicios: ${user.stats.exercises.percent}`
+        reads.innerHTML = `Lecturas: ${user.stats.reads.percent}`
+        quizzes.innerHTML = `Quizzes: ${user.stats.quizzes.percent}`
+        average.innerHTML = `Promedio/quizzes: ${user.stats.quizzes.scoreAvg}`
+        percent.innerHTML = `Porcentaje total: ${user.stats.percent}` 
+        div.appendChild(name);
+        list.appendChild(exercises);
+        list.appendChild(reads);
+        list.appendChild(quizzes);
+        list.appendChild(average);
+        list.appendChild(percent);
+        div.appendChild(list);
+        tablePercentUser.appendChild(div);
+        div.classList.add('div-user');
+        // list.clasList.add('ul-progress') 
+        exercises.classList.add('li-progress');
+        reads.classList.add('li-progress');
+        quizzes.classList.add('li-progress');
+        average.classList.add('li-progress');
+        percent.classList.add('li-progress');
       };
     };
   

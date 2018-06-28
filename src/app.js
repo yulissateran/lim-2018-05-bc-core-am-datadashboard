@@ -1,6 +1,5 @@
 const arrayOfFileOfData = ['../data/cohorts.json', '../data/cohorts/lim-2018-03-pre-core-pw/users.json', '../data/cohorts/lim-2018-03-pre-core-pw/progress.json']
-let tablePercentUser = document.getElementById('table-percent-users');
-const selectorOfCohorts = document.getElementById('selectorOfCohorts');
+
 let cohort = '';
 let courses = '';
 //Creando la lista de cohorts 
@@ -35,8 +34,8 @@ const getNameUsersOfCohort = () => {
 
 }
 
-        let orderBy = 'quizzes';
-        let orderDirection = 'DES';
+        let orderBy = 'name';
+        let orderDirection = 'ASD';
         sortUsers(computeUsersStats(users, progress, courses),orderBy,orderDirection);
        
        
