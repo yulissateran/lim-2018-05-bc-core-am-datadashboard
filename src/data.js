@@ -1,11 +1,45 @@
+const pintarStudents=(users)=>{
+  for (const user of users) {
+if (user.role === 'student') {
+ 
+  let div = document.createElement('div');  
+  let name = document.createElement('h3');
+  let list = document.createElement('ul');
+  let exercises = document.createElement('li');
+  let reads = document.createElement('li');
+  let quizzes = document.createElement('li');
+  let average = document.createElement('li');
+  let percent = document.createElement('li');
+  name.innerHTML =user.name;
+  exercises.innerHTML = `Ejercicios: ${user.stats.exercises.percent}`
+  reads.innerHTML = `Lecturas: ${user.stats.reads.percent}`
+  quizzes.innerHTML = `Quizzes: ${user.stats.quizzes.percent}`
+  average.innerHTML = `Promedio/quizzes: ${user.stats.quizzes.scoreAvg}`
+  percent.innerHTML = `Porcentaje total: ${user.stats.percent}` 
+  div.appendChild(name);
+  list.appendChild(exercises);
+  list.appendChild(reads);
+  list.appendChild(quizzes);
+  list.appendChild(average);
+  list.appendChild(percent);
+  div.appendChild(list);
+  tablePercentUser.appendChild(div);
+  div.classList.add('div-user');
+  // list.clasList.add('ul-progress') 
+  exercises.classList.add('li-progress');
+  reads.classList.add('li-progress');
+  quizzes.classList.add('li-progress');
+  average.classList.add('li-progress');
+  percent.classList.add('li-progress');
+};
+};
 
+return users}
 const validatorPromQuizzes =(a,b)=>{
   if(a !==0 && b !== 0){
     return a/b;
   }else{return 0;}
 }
-
-
  window.computeUsersStats=(users, progress, courses) =>{
     const usersWithStats = users;
     const keysProgress = Object.keys(progress);
@@ -79,15 +113,10 @@ const validatorPromQuizzes =(a,b)=>{
               user.stats.exercises['percent'] = 0;
             }
             scoreOfCohortInExercises += user.stats.exercises.percent;
-            console.log(quizzScoreSum);
-            console.log(quizzCompleted );
           } 
          }
       }
     promedioPercentOfExercises = scoreOfCohortInExercises / studentQuantiti;
-    //  containerOfPercentGeneral = document.getElementById('container-of-percent-general');
-    //  containerOfPercentGeneral.innerHTML = 'porcentaje promedio de ejercicios:   ' + Math.round(promedioPercentOfExercises) + '%';
-    //  console.log(promedioPercentOfExercises) 
     }catch(err){console.log(err.message) }
     // console.log(usersWithStats)
     
@@ -97,46 +126,6 @@ const validatorPromQuizzes =(a,b)=>{
 
 window.sortUsers = (users,orderBy,orderDirection)=>{
   
-  sort(users, orderBy, orderDirection);
-  // users.filter(()=>{})
-    for (const user of users) {
-      if (user.role === 'student') {
-       
-        let div = document.createElement('div');  
-        let name = document.createElement('h3');
-        let list = document.createElement('ul');
-        let exercises = document.createElement('li');
-        let reads = document.createElement('li');
-        let quizzes = document.createElement('li');
-        let average = document.createElement('li');
-        let percent = document.createElement('li');
-        name.innerHTML =user.name;
-        exercises.innerHTML = `Ejercicios: ${user.stats.exercises.percent}`
-        reads.innerHTML = `Lecturas: ${user.stats.reads.percent}`
-        quizzes.innerHTML = `Quizzes: ${user.stats.quizzes.percent}`
-        average.innerHTML = `Promedio/quizzes: ${user.stats.quizzes.scoreAvg}`
-        percent.innerHTML = `Porcentaje total: ${user.stats.percent}` 
-        div.appendChild(name);
-        list.appendChild(exercises);
-        list.appendChild(reads);
-        list.appendChild(quizzes);
-        list.appendChild(average);
-        list.appendChild(percent);
-        div.appendChild(list);
-        tablePercentUser.appendChild(div);
-        div.classList.add('div-user');
-        // list.clasList.add('ul-progress') 
-        exercises.classList.add('li-progress');
-        reads.classList.add('li-progress');
-        quizzes.classList.add('li-progress');
-        average.classList.add('li-progress');
-        percent.classList.add('li-progress');
-      };
-    };
-  
-}
-
-  const sort=(users,orderBy, orderDirection)=>{
     users.sort((a, b) => {
       let x = '';
       let y = '';
@@ -214,10 +203,40 @@ window.sortUsers = (users,orderBy,orderDirection)=>{
        }
         }
      
-    })
+    return users;
+  })  
+return users
+}
+
+ 
+//Buscar estudiantes por nombre
+window.filterUsers = (users,search) => {
+  const nuevoUsers = users.filter((user) => {
+      return user.name === search;
+  })
+  return nuevoUsers;
+}
+
+
+  window.processCohortData =(options) =>{
+    const users = options.cohortData.users;
+    const progress = options.cohortData.progress;
+    const courses = Object.keys(options.cohort.coursesIndex);
+    const orderBy = options.orderBy;
+    const orderDirection = options.orderDirection;
+    const search = options.search;
+    let students = computeUsersStats(users,progress,courses); //Array con los usuarios de ese cohort
+    console.log('arreglo users'+students);
+     students = sortUsers(students,orderBy,orderDirection);
+    console.log('ordenado'+students);
+    if(search !== ''){
+      students = filterUsers(students,search);
+    console.log('filtrado'+students);
+    
+    }
+    console.log('resultadofinal'+students)
+    return  pintarStudents(students);
   }
-
-
 
 
 
