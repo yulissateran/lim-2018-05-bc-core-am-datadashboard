@@ -8,7 +8,6 @@ const getListOfCohorts = () => {
   .then((response) => response.json())
   .then((cohorts) => {
      cohort = cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
-     courses = Object.keys(cohort.coursesIndex);
     cohorts.forEach(cohort => selectorOfCohorts.innerHTML+=`<option>${cohort.id}</option>`)
   })
 }
@@ -20,40 +19,18 @@ const getNameUsersOfCohort = () => {
       fetch(arrayOfFileOfData[2], { method: 'GET' })         
       .then((response) =>  response.json())
       .then((progress) => {  
-        console.log(cohort)
-        console.log(courses);
         const options = {
-                 cohort: cohort,
+              cohort: cohort,
               cohortData:{
-                  users:users,
-                    progress:{}
+                  users: users,
+                  progress:progress
               },
-                    orderBy:'',
-            orderDirection:'',
-             search:''
+              orderBy:'name',
+              orderDirection:'ASD',
+              search:'Lizeth'
+            }
 
-}
-
-window.processCohortData = (options) =>{
-  const users = options.cohortData.users;
-  const progress = options.cohortData.progress;
-  const courses = options.cohort;
-  const orderBy = options.orderBy;
-  const orderDirection = options.orderDirection;
-  let students = computeUsersWithStats(users,progress,cohort);
-  estudiantes = sortUsers(estudiantes,orderBy,orderDirection);
-  if(options.search !== ''){
-estudiantes = filterUsers(estudiantes ,options.search)
-return estudiantes;
-  }
-  return estudiantes;
-}
-
-
-        let orderBy = 'name';
-        let orderDirection = 'ASD';
-        sortUsers(computeUsersStats(users, progress, courses),orderBy,orderDirection);
-       
+processCohortData(options);      
        
       })
     })
