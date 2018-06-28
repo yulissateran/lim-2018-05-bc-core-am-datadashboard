@@ -1,42 +1,68 @@
-.cohorts{
-margin:20px;
-}
-.profile-users{
-  width: 80%;
-}
-.profile-student{
-  border-color: #90A4AE;
-  float: left;
-  border-radius: 1em;
-  padding: 8px;
-  margin: 0;
-}
-
 body{
+  color: #2b2b2b;
   font-family: museo-sans, Roboto, "Helvetica Neue", Arial, sans-serif;
-   color: #2b2b2b;
-    font-family: museo-sans, Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-weight: 100;
-    font-size: 16px;
-    line-height: 145%;
+  margin:0px;
+}
+.conten{
+  width: 80%;
 }
 
 header{
+  color: rgba(0, 0, 0, 0.87);
+  width: 100%; 
   text-align: center;
-  padding: 5px; 
-  margin: 10px;
+  padding: 0.5px;
   background-color :#ffc107;
-
+  width: 100%;
+  box-sizing: border-box;
+  flex-direction: column;
+  font-family: museo-sans, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 145%;
 }
 .hidden{
    display: none;
 }
-.search-students{
- padding: 10px 9px 5px 9px;
+.select-cohorts{
+  margin: 0% auto;
+  height:3em ;
+  border-radius:10px;
+  border-color: #F2F3F4 ;
+  line-height: 145%;
+  background-color: #FBFCFC  ;   
+} 
+.container-profiles-users{
+  width: 100%;
 }
-@media (min-width: 600px){
+.div-user{
+  float: left;
+  background-color: #EBF5FB;
+  width: 160px;
+  height: 150px;
+  border-style: none;
+  /* border-color:  #0D47A1    ; */
+  color: #2b2b2b;
+  margin: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 10px;
+  float: left;
+}
+.ul-progress{
+  flex: 1 1 auto;
+  list-style: none;
+}
+.li-progress{
+  list-style: none;
+  /* list-style-type: none; */
+  margin-right: 0%;
+}
+.menu{
+  background-color: #fff;
+  height: 100%;
+  border-color: #2b2b2b;
+  width:25%;
+  position: relative;
+}
 
-.profile-user {
-    max-width: 50%;
-    flex-basis: 50%;
-}}

@@ -1,46 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
+ <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css" />
-    <title>Data Dashboard</title>
+    <title>Laboratoria Dataashboard</title>
   </head>
   <body>
-    <header class="header">
+    <section class="content">
+      <header>
       <h1>Laboratoria Datadashboard</h1>
-    </header>
-    <form class="search-students" action="">
-        <div id="cohorts" class="cohorts">
-          <p>Selecciona un cohort</p>
-          <select id="selectorOfCohorts" class=""></select>
-        </div>
-        <div id = "search-students" class = "search-students hidden">
-          <p id="courses-of-the-cohort"></p>
-          <p id="container-of-percent-general"></p><br/>
-        </div>
-    </form>
-    <main id ="container-data-users" class ="profile-users hidden">
-        <!--<div id = "container-data-users" class= "profile-users hidden">
-            <table>
-              <thead>
-                <caption>Lista de alumnas</caption>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Ejercicios</th>
-                  <th>Lecturas</th>
-                  <th>Quizzes</th>
-                  <th>Promedio es quizzes</th>
-                  <th>Completitud Total</th>
-                </tr>
-              </thead>
-              <tbody id="table-percent-users" class = "profile-users hidden">
-              </tbody>
-            </table>
-          </div> -->
-    </main>
+      </header>
+      <form class="">
+      <label for="">Cohorts</label>
+      <select id="selectorOfCohorts" class="select-cohorts"></select>
+      </form>
+      <section></section>
+      <main id="table-percent-users" class="container-profiles-users hidden">
+      </main>
+    </section> 
+    <!-- <aside class="menu">
+      <ul><li><hr> jkadajkjdkja <hr></li></ul>
+
+    </aside> -->
     <script src="data.js"></script>
     <script src="app.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
+
+
+

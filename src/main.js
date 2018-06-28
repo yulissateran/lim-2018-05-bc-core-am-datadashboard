@@ -1,6 +1,7 @@
-const searchStudents = document.getElementById('search-students');
-const btnSearch = document.getElementById('btnSearch'); 
-let searchName = document.getElementById('searchName');
+// const containerDataUsers = document.getElementById('container-data-users')
+let tablePercentUser = document.getElementById('table-percent-users');
+const selectorOfCohorts = document.getElementById('selectorOfCohorts');
+
 
 // Evento para el boton cohorts que liste los cohorts
 document.addEventListener('DOMContentLoaded', (e) => {
@@ -13,15 +14,15 @@ selectorOfCohorts.addEventListener('change', (e) => {
     e.preventDefault();
     if (selectorOfCohorts.value === 'lim-2018-03-pre-core-pw'){
         getNameUsersOfCohort();
-        searchStudents.classList.remove('hidden');
     
-        containerDataUsers.classList.remove('hidden');
-        // tablePercentUser.classList.remove('hidden')
+        // containerDataUsers.classList.remove('hidden');
+        tablePercentUser.classList.remove('hidden')
     }else{
             alert('aún no hay datos de este cohort')
         }
  
 });
+
 // //evento para
 // btnSearch.addEventListener('click', (e) => {
 //         e.preventDefault();
@@ -39,6 +40,10 @@ selectorOfCohorts.addEventListener('change', (e) => {
 //         edad : 12,
 //     }
 // ];
+
+
+
+
 
 // const dataComidas = {
 //     shiro : {
