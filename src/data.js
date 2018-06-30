@@ -61,11 +61,14 @@ const validatorPromQuizzes =(a,b)=>{
               for (unit in unitsOfCourses) {
                 let partsOfUnit = unitsOfCourses[unit].parts;       //console.log(partsOfUnit)
                 for (part in partsOfUnit) {
+                  // console.log(part)
+                  // console.log(partsOfUnit)
                   let type = partsOfUnit[part].type;
                   let completed = partsOfUnit[part].completed;             //console.log(type)
                   if (type === 'quiz' ) {
                     quizzsTotal++
                     if (completed === 1){ quizzCompleted++ }
+                    // console.log(partsOfUnit[part]);
                       if ((partsOfUnit[part]).hasOwnProperty('score')){
                        quizzScoreSum += partsOfUnit[part].score}
                   }
@@ -90,6 +93,7 @@ const validatorPromQuizzes =(a,b)=>{
               user.stats.quizzes['scoreAvg'] = Math.round(validatorPromQuizzes(quizzScoreSum,quizzCompleted));
               user.stats['percent'] = progress[id][courses]['percent'];
               user.stats['exercises'] = {};
+console.log((((unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['completed']) * 100)));
               user.stats.exercises['total'] = (Object.keys(unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['exercises'])).length;
               user.stats.exercises['completed'] = unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['exercises']['01-coin-convert']['completed'] +
                 unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['exercises']['02-restaurant-bill']['completed'];
@@ -118,7 +122,7 @@ const validatorPromQuizzes =(a,b)=>{
       }
     promedioPercentOfExercises = scoreOfCohortInExercises / studentQuantiti;
     }catch(err){console.log(err.message) }
-    // console.log(usersWithStats)
+    console.log(usersWithStats)
     
     return usersWithStats; 
   }
@@ -138,7 +142,7 @@ window.sortUsers = (users,orderBy,orderDirection)=>{
         if (x > y) { return -1; }
         return 0;}  
     if (orderDirection === 'ASD') {
-      if(orderBy === 'name'){
+      if(orderBy === 'nombre'){
          x = a.name.toLowerCase();
          y = b.name.toLowerCase();
         return asd(x,y);
@@ -218,6 +222,11 @@ window.filterUsers = (users,search) => {
 }
 
 
+
+
+
+
+
   window.processCohortData =(options) =>{
     const users = options.cohortData.users;
     const progress = options.cohortData.progress;
@@ -226,16 +235,13 @@ window.filterUsers = (users,search) => {
     const orderDirection = options.orderDirection;
     const search = options.search;
     let students = computeUsersStats(users,progress,courses); //Array con los usuarios de ese cohort
-    console.log('arreglo users'+students);
-     students = sortUsers(students,orderBy,orderDirection);
-    console.log('ordenado'+students);
+    if(orderBy !='' && orderDirection != ''){
+      students = sortUsers(students,orderBy,orderDirection);//Array ordenado
+    } 
     if(search !== ''){
-      students = filterUsers(students,search);
-    console.log('filtrado'+students);
-    
+     students = filterUsers(students,search);//Array filtrado
     }
-    console.log('resultadofinal'+students)
-    return  pintarStudents(students);
+    return  pintarStudents(students);// pintar estudiantes en pantalla
   }
 
 

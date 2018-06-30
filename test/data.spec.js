@@ -77,7 +77,12 @@ describe('data', () => {
 
   describe('sortUsers(users, orderBy, orderDirection)', () => {
 
+
     it('debería retornar arreglo de usuarios ordenado por nombre ASC');
+    let orderBy='name';
+    let orderDirection='ASD';
+    let students=[{ name: "Amelia"},{ name: "Zarela"},{name: "Leydy  peralta"}]
+    assert.equal(sortUsers(students,orderBy,orderDirection),[{ name: "Amelia"},{name: "Leydy  peralta"},{ name: "Zarela"}])
     it('debería retornar arreglo de usuarios ordenado por nombre DESC');
     it('debería retornar arreglo de usuarios ordenado por porcentaje general ASC');
     it('debería retornar arreglo de usuarios ordenado por porcentaje general DESC');

@@ -25,9 +25,9 @@ const getNameUsersOfCohort = () => {
                   users: users,
                   progress:progress
               },
-              orderBy:'name',
-              orderDirection:'ASD',
-              search:'Lizeth'
+              orderBy:'',
+              orderDirection:'',
+              search:''
             }
 
 processCohortData(options);      
