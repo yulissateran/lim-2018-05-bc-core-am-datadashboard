@@ -8,7 +8,7 @@
   <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 </head>
 <body>
-  <header class="container-menu"><h1>Titulo aqui</h1>
+  <header class="header-container-menu"><h1>Titulo aqui</h1>
         
             <input type="checkbox" name="" id="btn-menu" class="btn-menu hidden">
             <label for="btn-menu" class="btn-menu "><img src="img-menu.png" class="img-menu" alt=""></label>
@@ -20,14 +20,14 @@
                   <li class="profile">
                     <p class="parrafo">Perfil</p>
                   </li>
-                  <li class="li-menu">	
+                  <li class="li-menu" >	
                     <p class="parrafo">Cursos</p>
                   </li>
-                  <li class="li-menu" >	
+                  <li class = "li-menu" id ="btn-cohorts">	
                     <p class="parrafo"> Cohorts</p>
                   </li>
                   <li class="li-menu">
-                    <input type="text" id="buscador" placeholder="Buscar estudiante...">
+                    <!-- <input type="text" id="buscador" placeholder="Buscar estudiante..."> -->
                   </li>
                   <li class="li-menu" >
                     <p class="parrafo">Configuración</p>
@@ -35,24 +35,30 @@
                 </ul>
               </nav>
             </header>
-      <form class="selectores ">
-          <label for="selectorOfCohorts">Cohorts</label>
-          <select id="selectorOfCohorts" class="select-cohorts" value="selecciona un cohort" ></select>
-          <label for="select-order">Ordenar alumnas por:</label>
-          <select name="select-order" id="select-order">
-            <option value="name">Nombre</option>
-            <option value="reads">Lecturas</option>
-            <option value="quizzes">Quizzes</option>
-            <option value="quizzes-avg">Promedio Quizzes</option>
-            <option value="exercises">Ejercicios</option>
-            <option value="percent">Completitud del curso</option>
-          </select>
-          <label for="asd">Ascendiente</label>
-          <input type="radio" name="order-direction" id="asd">
-          <label for="des">Descendiente</label>
-          <input type="radio" name="order-direction" id="des">
-          <label for="filter-users"></label>
-          <input type="text" name="filter-users" id="filter-users">
+      <form class="form-selectores">
+              <div class="container-select">
+                  <label for="selectorOfCohorts" class="">Cohorts</label>
+                  <select id="selectorOfCohorts" class="select-cohorts" value="selecciona un cohort" ></select>
+              </div>
+              <div class="container-select">
+              <label for="select-order" class="select-order div-one">Ordenar alumnas por:</label>
+              <select name="select-order" id="select-order" class="select-order div-one">
+               <option value="name">Nombre</option>
+               <option value="reads">Lecturas</option>
+               <option value="quizzes">Quizzes</option>
+               <option value="quizzes-avg">Promedio Quizzes</option>
+               <option value="exercises">Ejercicios</option>
+               <option value="percent">Completitud del curso</option>
+             </select>
+              <label for="asd" class=" order-direction div-one">Ascendente</label>
+              <input type="radio" class="order-direction div-one" id="asd">
+              <label for="des" clas="order-direction div-one">Descendente</label>
+              <input type="radio" class="order-direction div-one" id="des">
+            </div>
+              <div class="container-select">  
+              <label for="filter-users">Buscar alumnas</label>
+              <input type="text" id="buscador" class="filter-users"placeholder="Buscar estudiante...">
+            </div>
       </form>
           <main id="profiles-users" class="container-profiles-users hidden ">
           </main>

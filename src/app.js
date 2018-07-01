@@ -1,7 +1,13 @@
 const arrayOfFileOfData = ['../data/cohorts.json', '../data/cohorts/lim-2018-03-pre-core-pw/users.json', '../data/cohorts/lim-2018-03-pre-core-pw/progress.json']
-
+const btnCohorts =document.getElementById('btn-cohorts');
+let containerCohorts = document.getElementById('continer-cohorts');
+let divCohort ="";
+let nameCohort="";
 let cohort = '';
 let courses = '';
+btnCohorts.addEventListener('click',()=>{
+  getListOfCohorts
+});
 //Creando la lista de cohorts 
 const getListOfCohorts = () => {
   fetch(arrayOfFileOfData[0], { method: 'GET' })
