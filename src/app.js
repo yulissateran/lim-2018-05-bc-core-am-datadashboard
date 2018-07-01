@@ -25,12 +25,13 @@ const getNameUsersOfCohort = () => {
                   users: users,
                   progress:progress
               },
-              orderBy:'',
-              orderDirection:'',
+              orderBy:'name',
+              orderDirection:'asd',
               search:''
             }
 
-processCohortData(options);      
+processCohortData(options);
+pintarStudents(processCohortData(options))      
        
       })
     })

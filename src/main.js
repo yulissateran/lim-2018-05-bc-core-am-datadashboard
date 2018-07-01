@@ -1,5 +1,5 @@
-// const containerDataUsers = document.getElementById('container-data-users')
-let tablePercentUser = document.getElementById('table-percent-users');
+// let tableUsers = document.getElementById('table-body')
+let profilesUsers = document.getElementById('profiles-users');
 const selectorOfCohorts = document.getElementById('selectorOfCohorts');
 
 
@@ -16,7 +16,7 @@ selectorOfCohorts.addEventListener('change', (e) => {
         getNameUsersOfCohort();
     
         // containerDataUsers.classList.remove('hidden');
-        tablePercentUser.classList.remove('hidden')
+        profilesUsers.classList.remove('hidden')
     }else{
             alert('aún no hay datos de este cohort')
         }

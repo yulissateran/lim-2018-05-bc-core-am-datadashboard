@@ -23,7 +23,7 @@ if (user.role === 'student') {
   list.appendChild(average);
   list.appendChild(percent);
   div.appendChild(list);
-  tablePercentUser.appendChild(div);
+  profilesUsers.appendChild(div);
   div.classList.add('div-user');
   // list.clasList.add('ul-progress') 
   exercises.classList.add('li-progress');
@@ -31,6 +31,15 @@ if (user.role === 'student') {
   quizzes.classList.add('li-progress');
   average.classList.add('li-progress');
   percent.classList.add('li-progress');
+  // tableUsers.innerHTML += 
+  // `<tr>
+  //              <td>${user.name}</td>
+  //              <td>${user.stats.exercises.percent}%</td> 
+  //              <td>${user.stats.reads.percent}%</td> 
+  //              <td>${user.stats.quizzes.percent}%</td>
+  //              <td>${user.stats.quizzes.scoreAvg}%</td>
+  //              <td>${user.stats.percent}%</td>
+  //            </tr>` 
 };
 };
 
@@ -93,7 +102,7 @@ const validatorPromQuizzes =(a,b)=>{
               user.stats.quizzes['scoreAvg'] = Math.round(validatorPromQuizzes(quizzScoreSum,quizzCompleted));
               user.stats['percent'] = progress[id][courses]['percent'];
               user.stats['exercises'] = {};
-console.log((((unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['completed']) * 100)));
+
               user.stats.exercises['total'] = (Object.keys(unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['exercises'])).length;
               user.stats.exercises['completed'] = unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['exercises']['01-coin-convert']['completed'] +
                 unitsOfCourses['02-variables-and-data-types']['parts']['06-exercises']['exercises']['02-restaurant-bill']['completed'];
@@ -141,19 +150,19 @@ window.sortUsers = (users,orderBy,orderDirection)=>{
         if (x < y) { return 1; }
         if (x > y) { return -1; }
         return 0;}  
-    if (orderDirection === 'ASD') {
-      if(orderBy === 'nombre'){
+    if (orderDirection === 'asd') {
+      if(orderBy === 'name'){
          x = a.name.toLowerCase();
          y = b.name.toLowerCase();
         return asd(x,y);
        
       }
-      if(orderBy==='completitud'){
+      if(orderBy==='percent'){
          x = a.stats.percent;
          y = b.stats.percent;
         return asd(x,y)
       }
-      if (orderBy ==='ejercicios') { 
+      if (orderBy ==='exercises') { 
         x = a.stats.exercises.completed;
         y = b.stats.exercises.completed;
         return asd(x, y)
@@ -163,29 +172,29 @@ window.sortUsers = (users,orderBy,orderDirection)=>{
         y = b.stats.quizzes.completed;
         return asd(x, y) 
        }
-      if (orderBy === 'prom-quizzes') { 
+      if (orderBy === 'quizzes-avg') { 
         x = a.stats.quizzes.scoreAvg;
         y = b.stats.quizzes.scoreAvg;
         return asd(x, y)
       }
-      if (orderBy === 'lecturas') { 
+      if (orderBy === 'reads') { 
         x = a.stats.reads.completed;
         y = b.stats.reads.completed;
         return asd(x, y)
       }
       
-    }else if(orderDirection ==='DES'){
+    }else if(orderDirection ==='des'){
       if (orderBy === 'name') {
         x = a.name.toLowerCase();
         y = b.name.toLowerCase();
         return des (x, y);
       }
-      if (orderBy === 'completitud') {
+      if (orderBy === 'percent') {
         x = a.stats.percent;
         y = b.stats.percent;
         return des(x, y)
       }
-      if (orderBy === 'ejercicios') { 
+      if (orderBy === 'exercises') { 
         x = a.stats.exercises.completed;
         y = b.stats.exercises.completed;
         return des(x, y)
@@ -195,12 +204,12 @@ window.sortUsers = (users,orderBy,orderDirection)=>{
         y = b.stats.quizzes.completed;
         return des(x, y)
       }
-      if (orderBy === 'prom-quizzes') {
+      if (orderBy === 'quizzes-avg') {
         x = a.stats.quizzes.scoreAvg;
         y = b.stats.quizzes.scoreAvg;
         return des(x, y)
       }
-      if (orderBy === 'lecturas') {
+      if (orderBy === 'reads') {
         x = a.stats.reads.completed;
         y = b.stats.reads.completed;
         return des(x, y)
@@ -235,14 +244,16 @@ window.filterUsers = (users,search) => {
     const orderDirection = options.orderDirection;
     const search = options.search;
     let students = computeUsersStats(users,progress,courses); //Array con los usuarios de ese cohort
-    if(orderBy !='' && orderDirection != ''){
+    
       students = sortUsers(students,orderBy,orderDirection);//Array ordenado
-    } 
+    
     if(search !== ''){
      students = filterUsers(students,search);//Array filtrado
     }
-    return  pintarStudents(students);// pintar estudiantes en pantalla
+     ;// pintar estudiantes en pantalla
+     return students;
   }
+
 
 
 

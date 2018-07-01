@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>prueba</title>
-	<link rel="stylesheet" href="style.css">
+  <title>prueba</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 </head>
 <body>
   <header><h1>Titulo aqui</h1></header>
@@ -34,19 +36,43 @@
               </nav>
         </div>     
       <form class="selectores ">
-          <label for="">Cohorts</label>
+          <label for="selectorOfCohorts">Cohorts</label>
           <select id="selectorOfCohorts" class="select-cohorts" value="selecciona un cohort" ></select>
+          <label for="select-order">Ordenar alumnas por:</label>
           <select name="select-order" id="select-order">
-            <option value="nombre"></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-          </select>    
+            <option value="name">Nombre</option>
+            <option value="reads">Lecturas</option>
+            <option value="quizzes">Quizzes</option>
+            <option value="quizzes-avg">Promedio Quizzes</option>
+            <option value="exercises">Ejercicios</option>
+            <option value="percent">Completitud del curso</option>
+          </select>
+          <label for="asd">Ascendiente</label>
+          <input type="radio" name="order-direction" id="asd">
+          <label for="des">Descendiente</label>
+          <input type="radio" name="order-direction" id="des">
+          <label for="filter-users"></label>
+          <input type="text" name="filter-users" id="filter-users">
       </form>
-          <main id="table-percent-users" class="container-profiles-users hidden ">
+          <main id="profiles-users" class="container-profiles-users hidden ">
           </main>
+          <!-- <section id="table-users" class="table-users w3-container">
+            <table class="w3-table-all w3-large" >
+              <thead>
+               <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+               </tr>
+              </thead>
+              <tbody id="table-body">
+
+              </tbody>
+            </table>
+          </section> -->
           <script src="data.js"></script>
           <script src="app.js"></script>
           <script src="main.js"></script>
