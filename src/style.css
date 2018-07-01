@@ -4,7 +4,8 @@
 	margin:0px;
 	padding: 0px;
   
-}
+} 
+/* estilos header */
 header{
 	background-color: #FFE521;
 	width: 100%;
@@ -20,6 +21,7 @@ h1{
 	margin-left: -350px;
 	float: center;
 }
+/* estilos menú */
   .container-menu{
 	color: rgba(0, 0, 0, 0.87);
 	width: 250px; 
@@ -29,12 +31,9 @@ h1{
 	background-color: #FFE521
 	
   }
-.hidden{
-	display: none;
- }
+
  .container-menu label{
      display: none;
-	  /* display: block; */
 	  width: 40px;
 	  height: 50px;
 	  padding: 10px;
@@ -56,13 +55,9 @@ nav{
 }
 
 ul{
-	/* margin-top:50px; */
 	list-style: none;
 	display: block;
 	padding: 0;
-	
-	/* justify-content: center; */
-	
 }
 
 .li-menu{
@@ -134,6 +129,11 @@ li:hover #buscador{
 	opacity: 1.;
 	background-color: rgba(0,0,0,0.3);
 }
+/* clase para elementos q estaran ocultos */
+.hidden{
+	display: none;
+ }
+ /* estilos para el contenedor de selectores */
 .selectores{
 	margin-left:  250px;
 	height: 170px;
@@ -173,7 +173,26 @@ li:hover #buscador{
   }
   
   @media(max-width: 728px){
-   
+h1{
+	margin-top: 0;
+	padding-top: 15px;
+	padding-left:  60px;
+}		
+body {
+		margin-top: 0 ;
+		padding: 0;
+	}
+		.container-menu{
+width: 100%;
+	margin: 0 0;
+	
+
+	}
+		header{
+			padding: 0px 40%;
+		 position: static;
+		 margin: 0 0;
+	 }
 	.container-menu label {
 	  display: block;
 	}
@@ -190,12 +209,12 @@ li:hover #buscador{
 	}
 	.selectores {
 		width: 100%;
-		margin-left: 0;
+		margin-left: 30px;
   }
   .container-profiles-users{
 		width: 100%;
     margin-left: 0;
-    margin: 10px;
+    margin: 0;
 	}
   }
   
