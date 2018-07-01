@@ -158,7 +158,7 @@ li:hover #buscador{
 	margin-left:  250px;
   }
   .div-user{
-	float: left;
+	display: inline-block;
 	background-color: #EBF5FB;
 	width: 25%;
 	height: 150px;
@@ -194,7 +194,8 @@ li:hover #buscador{
   }
   .container-profiles-users{
 		width: 100%;
-		margin-left: 0;
+    margin-left: 0;
+    margin: 10px;
 	}
   }
   
