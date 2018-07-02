@@ -1,6 +1,11 @@
-// const containerDataUsers = document.getElementById('container-data-users')
-let tablePercentUser = document.getElementById('table-percent-users');
+// let tableUsers = document.getElementById('table-body')
+let profilesUsers = document.getElementById('profiles-users');
 const selectorOfCohorts = document.getElementById('selectorOfCohorts');
+//order 
+let btnOrderASC = document.getElementById('asd');
+let btnOrderDESC = document.getElementById('des');
+let selectOrder = document.getElementById('select-order')
+let selectDirection = document.getElementById('order-direction')
 
 
 // Evento para el boton cohorts que liste los cohorts
@@ -16,9 +21,27 @@ selectorOfCohorts.addEventListener('change', (e) => {
         getNameUsersOfCohort();
     
         // containerDataUsers.classList.remove('hidden');
-        tablePercentUser.classList.remove('hidden')
+        profilesUsers.classList.remove('hidden')
     }else{
             alert('aún no hay datos de este cohort')
         }
  
 });
+
+//Evento de boton para ordenar
+btnOrder.addEventListener('click', (e) => {
+    
+})
+
+//Evento de boton para ordenar de forma ascendente
+btnAscendente.addEventListener('click', (e) => { 
+    e.preventDefault();
+   
+})
+
+//Evento de boton para ordenar de forma descendente
+btnDescendente.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+})
+
