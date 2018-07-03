@@ -70,8 +70,6 @@
                   for (unit in unitsOfCourses) {
                     let partsOfUnit = unitsOfCourses[unit].parts;       //console.log(partsOfUnit)
                     for (part in partsOfUnit) {
-                      // console.log(part)
-                      // console.log(partsOfUnit)
                       let type = partsOfUnit[part].type;
                       let completed = partsOfUnit[part].completed;             //console.log(type)
                       if (type === 'quiz' ) {
@@ -81,8 +79,6 @@
                           if ((partsOfUnit[part]).hasOwnProperty('score')){
                            quizzScoreSum += partsOfUnit[part].score}
                       }
-                      //  if (type === 'practice') {  // console.log(propertysOfTheParts.completed);
-                      //  if (propertysOfTheParts.completed === 1) { } }
                       if (type === 'read' ) {
                         readsTotals++
                         if (completed === 1) { readsCompleted++ }
@@ -231,25 +227,20 @@
     });
     return usersFiltered; 
   }
-    
-    
-      window.processCohortData =(options) =>{
-        const users = options.cohortData.users;
-        const progress = options.cohortData.progress;
-        const courses = Object.keys(options.cohort.coursesIndex);
-        const orderBy = options.orderBy;
-        const orderDirection = options.orderDirection;
-        const search = options.search;
-        let students = computeUsersStats(users,progress,courses); //Array con los usuarios de ese cohort
+  
+ window.processCohortData =(options) =>{
+    const users = options.cohortData.users;
+    const progress = options.cohortData.progress;
+    const courses = Object.keys(options.cohort.coursesIndex);
+    const orderBy = options.orderBy;
+    const orderDirection = options.orderDirection;
+    const search = options.search;
+    let students = computeUsersStats(users,progress,courses); //Array con los usuarios de ese cohort
         
           students = sortUsers(students,orderBy,orderDirection);//Array ordenado
-        /*if(search !== ''){
-         students = filterUsers(users,search);//Array filtrado
-        }*/
         if (options.search) {
           students = window.filterUsers(students, search)
       }
-      // pintar estudiantes en pantalla
          return students;
       }
     
