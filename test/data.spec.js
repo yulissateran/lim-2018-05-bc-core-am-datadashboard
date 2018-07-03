@@ -202,6 +202,7 @@ describe('data', () => {
 
     it('debería retornar nuevo arreglo solo con usuarios con nombres que contengan string (case insensitive)',()=>{
       let array = [{
+<<<<<<< HEAD
         "id": "5kFuSna84zYchZRVyCGbBj7ueAr2",
         "signupCohort": "lim-2018-03-pre-core-pw",
         "timezone": "America/Lima",
@@ -222,6 +223,37 @@ describe('data', () => {
         "role": "student"},]
       assert.deepEqual(window.filterUsers(array,"Doris"), array);
     }); 
+=======
+        "id":"LZZiC91B4NddpaPTBJ1XpT9Ox8V2",
+        "name":"Dorelly","locale":"es-PE",
+        "timezone":"America/Lima","role":"student"},
+        {"id":"mIyuhjFX4uhASyDcWReNE5dcd2I2",
+        "github":"",
+        "locale":"es-ES",
+        "timezone":"America/Lima",
+        "name":"Fiorella S",
+        "linkedin":"","role":"student"},
+        {"id":"pHuZDr9WjBV1qrU66QZlq2yhGmC2",
+        "timezone":"America/Lima",
+        "name":"Dory",
+        "locale":"es-PE","role":"student"},
+        {"id":"rosNOO9dNQQDo4TlClcMiFHEIfy2",
+        "name":"Dalia","locale":"es-PE",
+        "timezone":"America/Lima","role":"student"}]
+    const dorelly= [{
+      "id":"LZZiC91B4NddpaPTBJ1XpT9Ox8V2",
+      "name":"Dorelly","locale":"es-PE",
+      "timezone":"America/Lima","role":"student"}
+    ];
+    const dalia = [
+      {"id":"rosNOO9dNQQDo4TlClcMiFHEIfy2",
+    "name":"Dalia","locale":"es-PE",
+    "timezone":"America/Lima","role":"student"}
+  ] 
+      assert.deepEqual(window.filterUsers(array,"Dorelly"), dorelly);
+      assert.deepEqual(window.filterUsers(array,"Dalia"), dalia);
+    });
+>>>>>>> a545643cf5945cb421bfa1f5e79384d0fc09f401
 
   });
 
@@ -284,4 +316,12 @@ describe('data', () => {
     
     });
     });
+<<<<<<< HEAD
   });
+=======
+
+  });
+
+
+
+>>>>>>> a545643cf5945cb421bfa1f5e79384d0fc09f401
