@@ -5,86 +5,48 @@
   <title>prueba</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
-  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+  <link href="https://fonts.googleapis.com/css?family=Bitter|Open+Sans:400,800" rel="stylesheet">
+ 
 </head>
 <body>
-  <header class="header-container-menu"><h1>Data Dashboard</h1>
-        
-            <input type="checkbox" name="" id="btn-menu" class="btn-menu hidden">
-            <label for="btn-menu" class="btn-menu "><img src="img-menu.png" class="img-menu" alt=""></label>
-            <nav>
-                <ul class="ul-menu">
-                  <li class="li-logo">
-                     <img class="logo" src="laboratoria-logo.png">
-                  </li>
-                  <li class="profile">
-                    <p class="parrafo">Perfil</p>
-                  </li>
-                  <li class="li-menu" >	
-                    <p class="parrafo">Cursos</p>
-                  </li>
-                  <li class = "li-menu" id ="btn-cohorts">	
-                    <p class="parrafo"> Cohorts</p>
-                  </li>
-                  <li class="li-menu">
-                    <!-- <input type="text" id="buscador" placeholder="Buscar estudiante..."> -->
-                  </li>
-                  <li class="li-menu" >
-                    <p class="parrafo">Configuración</p>
-                  </li>
-                </ul>
-              </nav>
-            </header>
-      <form class="form-selectores">
-              <div class="container-select">
-                  <label for="selectorOfCohorts" class="">Cohorts</label>
-                  <select id="selectorOfCohorts" class="select-cohorts" value="selecciona un cohort" ></select>
-              </div>
-              <div class="container-select">
-              <label for="select-order" class="select-order div-one">Ordenar alumnas por:</label>
-              <select name="select-order" id="select-order" class="select-order div-one">
-               <option value="name">Nombre</option>
-               <option value="reads">Lecturas</option>
-               <option value="quizzes">Quizzes</option>
-               <option value="quizzes-avg">Promedio Quizzes</option>
-               <option value="exercises">Ejercicios</option>
-               <option value="percent">Completitud del curso</option>
-             </select>
-             <select id="order-direction" class="select-order-direction">
-              <option value="asc">Ascendente</option>
-              <option value="des">Descendente</option>
-             </select>
-              <!--<label for="asd" class=" order-direction div-one">Ascendente</label>
-              <input name="order" type="radio" class="order-direction div-one" id="asd" value="asd">
-              <label for="des" clas="order-direction div-one">Descendente</label>
-              <input name="order" type="radio" class="order-direction div-one" id="des" value="des">
-              <button>Ordenar</button>-->
-            </div>
-              <div class="container-select">  
-              <label for="filter-users">Buscar alumnas</label>
-              <input type="text" id="buscador" class="filter-users" placeholder="Buscar estudiante...">
-            </div>
-      </form>
-          <main id="profiles-users" class="container-profiles-users hidden ">
-          </main>
-          <!-- <section id="table-users" class="table-users w3-container">
-            <table class="w3-table-all w3-large" >
-              <thead>
-               <tr>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-               </tr>
-              </thead>
-              <tbody id="table-body">
-              </tbody>
-            </table>
-          </section> -->
-          <script src="data.js"></script>
-          <script src="app.js"></script>
-          <script src="main.js"></script>
+  <header></header>
+    
+    <!-- <figure> <img src="laboratoria-logo.png" alt="logo-laboratoria"> </figure>  -->
+    
+    <form class="form-selectores ">
+      <h1>Data Dashboard</h1>
+        <div class="container-select">
+          <label for="select-cohorts" class="titles">Cohort</label>
+          <select id="select-cohorts" class="select-cohorts" value="selecciona un cohort" ></select>
+        </div>
+        <div class="container-select">
+          <label for="select-order" class="select-order titles">Ordenar</label>
+          <select  name="select-order" id="select-order" class = "select-order ">
+            <option value="name" class="asc">Nombre--ASC</option>
+            <option value="reads" class="asc">Lecturas--ASC</option>
+            <option value="quizzes" class="asc">Quizzes-ASC</option>
+            <option value="quizzes-avg" class="asc">Promedio en cuestionarios--ASC</option>
+            <option value="exercises" class="asc">Ejercicios--ASC</option>
+            <option value="percent" class="asc">Completitud del curso--ASC</option>
+            <option value="name" class="des">Nombre--DES</option>
+            <option value="reads" class="des">Lecturas--DES</option>
+            <option value="quizzes" class="des">Quizzes--DES</option>
+            <option value="quizzes-avg" class="des">Promedio en cuestionarios--DES</option>
+            <option value="exercises" class="des">Ejercicios-DES</option>
+            <option value="percent" class="des">Completitud del curso-DES</option>
+          </select>
+        </div>
+        <div class="container-select">  
+          <label for="filter-users" class ="titles">Buscar</label>
+          <input type="text" id="search" class="filter-users"> 
+          <button type = "button" id="btn-search">buscar</button>
+        </div>
+    </form>
+  <main id="profiles-users" class="container-profiles-users ">
+  </main>
+    <script src="data.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
+
+

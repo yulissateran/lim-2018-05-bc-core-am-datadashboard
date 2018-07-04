@@ -1,47 +1,93 @@
-// let tableUsers = document.getElementById('table-body')
 let profilesUsers = document.getElementById('profiles-users');
-const selectorOfCohorts = document.getElementById('selectorOfCohorts');
-//order 
-let btnOrderASC = document.getElementById('asd');
-let btnOrderDESC = document.getElementById('des');
-let selectOrder = document.getElementById('select-order')
-let selectDirection = document.getElementById('order-direction')
+const selectorOfCohorts = document.getElementById('select-cohorts');
+const selectOrder = document.getElementById('select-order');
+const btnSearch = document.getElementById('btn-search');
+let inputSearchStudent = document.getElementById('search');
+let options = {
+  cohort: null,
+  cohortData: {
+    users: null,
+    progress: null,
+  },
+  orderBy: 'name',
+  orderDirection: 'ASC',
+  search: ''
+}
+const getListOfCohorts = () => {
+  fetch('../data/cohorts.json')
+    .then((response) => response.json())
+    .then((cohorts) => {
+      dataCohorts = cohorts;
+      cohorts.forEach(cohort => selectorOfCohorts.innerHTML += `<option>${cohort.id}</option>`)
+    })
+return selectorOfCohorts
+}
+const pintarStudents = (users) => {
+  for (const user of users) {
+  profilesUsers.innerHTML += `
+    <div class='div-user'>
+      <h3>${user.name}</h3>
+      <ul>
+      <li class='li-progress'>Ejercicios: ${user.stats.exercises.percent}</li>
+      <li class='li-progress'>Lecturas: ${user.stats.reads.percent}</li>
+      <li class='li-progress'>Quizzes:${user.stats.quizzes.percent}</li>
+      <li class='li-progress'>Promedio/quizzes: ${user.stats.quizzes.scoreAvg}</li>
+      <li class='li-progress'>Porcentaje total: ${ user.stats.percent}</li>
+      </ul>
+      </div>`  
+    };
+    return profilesUsers
+}
 
+//Creando la lista de cohorts 
+let users = '';
+//lista de alumnos
+const getNameUsersOfCohort = () => {
+  fetch('../data/cohorts.json')
+    .then((response) => response.json())
+    .then((cohorts) => {
+      fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
+        .then((response) => response.json())
+        .then((responseUsers) => {
+          fetch('../data/cohorts/lim-2018-03-pre-core-pw/progress.json')
+            .then((response) => response.json())
+            .then((progress) => {
+              options.cohort = cohorts.find(item => item.id === selectorOfCohorts.value);
+              users = responseUsers.filter((user) => user.signupCohort === options.cohort.id);
+              options.cohortData.users = users
+              options.cohortData.progress = progress
+              return pintarStudents(processCohortData(options))
 
-// Evento para el boton cohorts que liste los cohorts
+            })
+        })
+    });
+};
+// Evento para listar los cohorts
 document.addEventListener('DOMContentLoaded', (e) => {
-    e.preventDefault();
-    //se llenan las opciones
-    getListOfCohorts();
+  e.preventDefault();
+   getListOfCohorts();
 })
-// Evento para selector, que crea la lista de alumnas según el cohort
+// Evento para selector, crea la lista de alumnas según el cohort
 selectorOfCohorts.addEventListener('change', (e) => {
-    e.preventDefault();
-    if (selectorOfCohorts.value === 'lim-2018-03-pre-core-pw'){
-        getNameUsersOfCohort();
-    
-        // containerDataUsers.classList.remove('hidden');
-        profilesUsers.classList.remove('hidden')
-    }else{
-            alert('aún no hay datos de este cohort')
-        }
- 
+    e.preventDefault(); 
+        getNameUsersOfCohort();     
 });
 
-//Evento de boton para ordenar
-btnOrder.addEventListener('click', (e) => {
-    
-})
 
-//Evento de boton para ordenar de forma ascendente
-btnAscendente.addEventListener('click', (e) => { 
-    e.preventDefault();
-   
-})
 
-//Evento de boton para ordenar de forma descendente
-btnDescendente.addEventListener('click', (e) => {
-    e.preventDefault();
-    
-})
+selectOrder.addEventListener('change', (e) => {
+  e.preventDefault();
+    options.orderBy = selectOrder.value;
+    let optionTextValue = selectOrder.options[selectOrder.selectedIndex];
+    options.orderDirection = optionTextValue.text.substr(-3);
+    profilesUsers.innerHTML =''
+    getNameUsersOfCohort() 
+});
 
+
+btnSearch.addEventListener('click',(e) =>{
+  e.preventDefault();
+  options.search = inputSearchStudent.value.toLowerCase();
+  profilesUsers.innerHTML = ''
+  getNameUsersOfCohort()     
+});
