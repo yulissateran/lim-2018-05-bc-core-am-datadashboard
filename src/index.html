@@ -8,12 +8,7 @@
   <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 </head>
 <body>
-<<<<<<< HEAD
   <header class="header-container-menu"><h1>Data Dashboard</h1> 
-=======
-  <header class="header-container-menu"><h1>Titulo aqui</h1>
-        
->>>>>>> a545643cf5945cb421bfa1f5e79384d0fc09f401
             <input type="checkbox" name="" id="btn-menu" class="btn-menu hidden">
             <label for="btn-menu" class="btn-menu "><img src="img-menu.png" class="img-menu" alt=""></label>
             <nav>
@@ -21,110 +16,45 @@
                   <li class="li-logo">
                      <img class="logo" src="laboratoria-logo.png">
                   </li>
-                  <li class="profile">
-                    <p class="parrafo">Perfil</p>
-                  </li>
-                  <li class="li-menu" >	
-                    <p class="parrafo">Cursos</p>
-                  </li>
                   <li class = "li-menu" id ="btn-cohorts">	
                     <p class="parrafo"> Cohorts</p>
                   </li>
                   <li class="li-menu">
-                    <!-- <input type="text" id="buscador" placeholder="Buscar estudiante..."> -->
-                  </li>
-                  <li class="li-menu" >
-                    <p class="parrafo">Configuración</p>
                   </li>
                 </ul>
               </nav>
             </header>
       <form class="form-selectores">
               <div class="container-select">
-                  <label for="selectorOfCohorts" class="">Cohorts</label>
-                  <select id="selectorOfCohorts" class="select-cohorts" value="selecciona un cohort" ></select>
+                  <label for="select-cohorts" class="">Cohorts</label>
+                  <select id="select-cohorts" class="select-cohorts" value="selecciona un cohort" ></select>
               </div>
               <div class="container-select">
-              <label for="select-order" class="select-order div-one">Ordenar alumnas por:</label>
+              <label for="select-order" class="select-order div-one">Ordenar</label>
               <select name="select-order" id="select-order" class="select-order div-one">
-               <option value="name">Nombre</option>
-               <option value="reads">Lecturas</option>
-               <option value="quizzes">Quizzes</option>
-               <option value="quizzes-avg">Promedio Quizzes</option>
-               <option value="exercises">Ejercicios</option>
-               <option value="percent">Completitud del curso</option>
+               <option value="name" class="asc">Nombre--ASC</option>
+               <option value="reads" class="asc">Lecturas--ASC</option>
+               <option value="quizzes" class="asc">Quizzes-ASC</option>
+               <option value="quizzes-avg" class="asc">Promedio en cuestionarios--ASC</option>
+               <option value="exercises" class="asc">Ejercicios--ASC</option>
+               <option value="percent" class="asc">Completitud del curso--ASC</option>
+               <option value="name" class="des">Nombre--DES</option>
+              <option value="reads" class="des">Lecturas--DES</option>
+              <option value="quizzes" class="des"></option>Quizzes--DES</option>
+              <option value="quizzes-avg" class="des">Promedio en cuestionarios--DES</option>
+              <option value="exercises" class="des">Ejercicios-DES</option>
+                <option value="percent" class="des">Completitud del curso-DES</option>
              </select>
-<<<<<<< HEAD
-             <select id="order-direction" class="select-order-direction">
-              <option value="asc">Ascendente</option>
-              <option value="des">Descendente</option>
-             </select>
-              <!--<label for="asd" class=" order-direction div-one">Ascendente</label>
-              <input name="order" type="radio" class="order-direction div-one" id="asd" value="asd">
-              <label for="des" clas="order-direction div-one">Descendente</label>
-              <input name="order" type="radio" class="order-direction div-one" id="des" value="des">
-              <button>Ordenar</button>-->
             </div>
               <div class="container-select">  
-              <label for="filter-users">Buscar alumnas</label>
-              <input type="text" id="buscador" class="filter-users" placeholder="Buscar estudiante...">
+              <label for="filter-users">Buscar</label>
+              <input type="text" id="search" class="filter-users"placeholder="Buscar estudiante..."> <button type = "button" id="btn-search">buscar</button>
             </div>
       </form>
-          <main id="profiles-users" class="container-profiles-users hidden ">
+          <main id="profiles-users" class="container-profiles-users ">
           </main>
-          <!-- <section id="table-users" class="table-users w3-container">
-            <table class="w3-table-all w3-large" >
-              <thead>
-               <tr>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-               </tr>
-              </thead>
-              <tbody id="table-body">
-              </tbody>
-            </table>
-          </section> -->
           <script src="data.js"></script>
-          <script src="app.js"></script>
-          <script src="main.js"></script>
-</body>
-</html>
-=======
-              <label for="asd" class=" order-direction div-one">Ascendente</label>
-              <input type="radio" class="order-direction div-one" id="asd">
-              <label for="des" clas="order-direction div-one">Descendente</label>
-              <input type="radio" class="order-direction div-one" id="des">
-            </div>
-              <div class="container-select">  
-              <label for="filter-users">Buscar alumnas</label>
-              <input type="text" id="buscador" class="filter-users"placeholder="Buscar estudiante...">
-            </div>
-      </form>
-          <main id="profiles-users" class="container-profiles-users hidden ">
-          </main>
-          <!-- <section id="table-users" class="table-users w3-container">
-            <table class="w3-table-all w3-large" >
-              <thead>
-               <tr>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-               </tr>
-              </thead>
-              <tbody id="table-body">
-
-              </tbody>
-            </table>
-          </section> -->
-          <script src="data.js"></script>
-          <script src="app.js"></script>
+          <!-- <script src="app.js"></script> -->
           <script src="main.js"></script>
 </body>
 </html>
@@ -138,48 +68,3 @@
 
 
 
-
-<!-- <!DOCTYPE html>
-<html>
- <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css" />
-   
-  </head>
-  <body>
-    <section class="content">
-      <header></header>
-      <div class="container-menu">
-      <h1>Laboratoria Datadashboard</h1>
-      <input type="checkbox" name="" id="btn-menu" class="btn-menu hidden">
-      <label for="btn-menu"><img src="img-menu.png" alt=""></label>
-      <nav class="menu">
-        <ul>
-          <li>menu</li>
-          <li>menu</li>
-          <li>menu</li>
-          <li>menú</li>
-          <li>menú</li>
-          <li>menú</li>
-        </ul>
-      </nav>
-    </div>
-      <form class="">
-      <label for="">Cohorts</label>
-      <select id="selectorOfCohorts" class="select-cohorts"></select>
-      </form>
-      <section></section>
-      <main id="table-percent-users" class="container-profiles-users hidden">
-      </main>
-    </section> 
-  
-    <script src="data.js"></script>
-    <script src="app.js"></script>
-    <script src="main.js"></script>
-  </body>
-</html> -->
-
-
-
->>>>>>> a545643cf5945cb421bfa1f5e79384d0fc09f401
