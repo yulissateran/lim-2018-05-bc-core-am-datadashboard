@@ -5,33 +5,23 @@
   <title>prueba</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
-  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+  <link href="https://fonts.googleapis.com/css?family=Bitter|Open+Sans:400,800" rel="stylesheet">
+ 
 </head>
 <body>
-  <header class="header-container-menu"><h1>Data Dashboard</h1> 
-            <input type="checkbox" name="" id="btn-menu" class="btn-menu hidden">
-            <label for="btn-menu" class="btn-menu "><img src="img-menu.png" class="img-menu" alt=""></label>
-            <nav>
-                <ul class="ul-menu">
-                  <li class="li-logo">
-                     <img class="logo" src="laboratoria-logo.png">
-                  </li>
-                  <li class = "li-menu" id ="btn-cohorts">	
-                    <p class="parrafo"> Cohorts</p>
-                  </li>
-                  <li class="li-menu">
-                  </li>
-                </ul>
-              </nav>
-            </header>
-      <form class="form-selectores">
+  <header></header>
+    
+    <!-- <figure> <img src="laboratoria-logo.png" alt="logo-laboratoria"> </figure>  -->
+    
+            <form class="form-selectores ">
+              <h1>Data Dashboard</h1>
               <div class="container-select">
-                  <label for="select-cohorts" class="">Cohorts</label>
+                  <label for="select-cohorts" class="titles">Cohort</label>
                   <select id="select-cohorts" class="select-cohorts" value="selecciona un cohort" ></select>
               </div>
               <div class="container-select">
-              <label for="select-order" class="select-order div-one">Ordenar</label>
-              <select name="select-order" id="select-order" class="select-order div-one">
+              <label for="select-order" class="select-order titles">Ordenar</label>
+              <select disabled name="select-order" id="select-order" class = "select-order ">
                <option value="name" class="asc">Nombre--ASC</option>
                <option value="reads" class="asc">Lecturas--ASC</option>
                <option value="quizzes" class="asc">Quizzes-ASC</option>
@@ -47,8 +37,8 @@
              </select>
             </div>
               <div class="container-select">  
-              <label for="filter-users">Buscar</label>
-              <input type="text" id="search" class="filter-users"placeholder="Buscar estudiante..."> <button type = "button" id="btn-search">buscar</button>
+              <label for="filter-users" class ="titles">Buscar</label>
+              <input type="text" id="search" class="filter-users"placeholder="Buscar estudiante..." disabled> <button type = "button" id="btn-search" disabled>buscar</button>
             </div>
       </form>
           <main id="profiles-users" class="container-profiles-users ">

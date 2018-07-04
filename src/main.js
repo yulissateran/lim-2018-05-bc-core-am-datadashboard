@@ -1,4 +1,3 @@
-
 let profilesUsers = document.getElementById('profiles-users');
 const selectorOfCohorts = document.getElementById('select-cohorts');
 const selectOrder = document.getElementById('select-order');
@@ -14,9 +13,20 @@ let options = {
   orderDirection: 'ASC',
   search: ''
 }
+const getListOfCohorts = () => {
+    fetch('../data/cohorts.json')
+        .then((response) => response.json())
+        .then((cohorts) => {
+            dataCohorts = cohorts;
+            console.log(dataCohorts)
+            cohorts.forEach(cohort => selectorOfCohorts.innerHTML += `<option>${cohort.id}</option>`)
+            console.log(options);
+        })
+return selectorOfCohorts
+}
 const pintarStudents = (users) => {
     for (const user of users) {
-        if (user.role === 'student') {
+        console.log(users);
             profilesUsers.innerHTML += `
         <div class='div-user'>
         <h3>${user.name}</h3>
@@ -27,47 +37,35 @@ const pintarStudents = (users) => {
         <li class='li-progress'>Promedio/quizzes: ${user.stats.quizzes.scoreAvg}</li>
         <li class='li-progress'>Porcentaje total: ${ user.stats.percent}</li>
         </ul>
-        </div>`
-            // tableUsers.innerHTML += 
-            // `<tr>
-            //              <td>${user.name}</td>
-            //              <td>${user.stats.exercises.percent}%</td> 
-            //              <td>${user.stats.reads.percent}%</td> 
-            //              <td>${user.stats.quizzes.percent}%</td>
-            //              <td>${user.stats.quizzes.scoreAvg}%</td>
-            //              <td>${user.stats.percent}%</td>
-            //            </tr>` 
-        };
+        </div>`  
     };
     return profilesUsers
 }
-//Creando la lista de cohorts 
-const getListOfCohorts = () => {
-    fetch('../data/cohorts.json')
-        .then((response) => response.json())
-        .then((cohorts) => {
-            options.cohort = cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
-            cohorts.forEach(cohort => selectorOfCohorts.innerHTML += `<option>${cohort.id}</option>`)
-            console.log(options);
-        })
 
-}
+//Creando la lista de cohorts 
+let users = '';
 //lista de alumnos
 const getNameUsersOfCohort = () => {
-    fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
+  fetch('../data/cohorts.json')
+    .then((response) => response.json())
+    .then((cohorts) => {
+      fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
         .then((response) => response.json())
-        .then((users) => {
-            fetch('../data/cohorts/lim-2018-03-pre-core-pw/progress.json')
-                .then((response) => response.json())
-                .then((progress) => {
-                    options.cohortData.users = users
-                    options.cohortData.progress = progress
-                    console.log(options);
-                    // processCohortData(options);
-                    return pintarStudents(processCohortData(options))
+        .then((responseUsers) => {
+          fetch('../data/cohorts/lim-2018-03-pre-core-pw/progress.json')
+            .then((response) => response.json())
+            .then((progress) => {
+              options.cohort = cohorts.find(item => item.id === selectorOfCohorts.value);
+              console.log(options.cohort);
+              users = responseUsers.filter((user) => user.signupCohort === options.cohort.id);
+              options.cohortData.users = users
+              options.cohortData.progress = progress
+              
+              return pintarStudents(processCohortData(options))
 
-                })
+            })
         })
+    });
 };
 // Evento para listar los cohorts
 document.addEventListener('DOMContentLoaded', (e) => {
@@ -76,13 +74,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
 })
 // Evento para selector, crea la lista de alumnas según el cohort
 selectorOfCohorts.addEventListener('change', (e) => {
-    e.preventDefault();
-    if (selectorOfCohorts.value === 'lim-2018-03-pre-core-pw'){
-        getNameUsersOfCohort();
-        // profilesUsers.classList.remove('hidden')
-    }else{
-             
-        }
+    e.preventDefault(); 
+        getNameUsersOfCohort();     
 });
 
 
@@ -99,11 +92,9 @@ selectOrder.addEventListener('change', (e) => {
 
 btnSearch.addEventListener('click',(e) =>{
     e.preventDefault();
-    options.search = inputSearchStudent.value.toLowerCase();
+    options.search = inputSearchStudent.value.toL;
    console.log(options)
     profilesUsers.innerHTML = ''
-    // getNameUsersOfCohort()
-    return getNameUsersOfCohort() 
-     
+    return getNameUsersOfCohort()     
 });
 

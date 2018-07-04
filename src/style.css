@@ -1,111 +1,43 @@
 *{
-	font-family: museo-sans, Roboto, "Helvetica Neue", Arial, sans-serif;
 	margin:0px;
-	padding: 0px;
+	padding: 0px;  
 } 
 /* estilos header */
 h1{
-	margin-top: 25px;
-	float: center;
+	font-family: 'Bitter', serif;
+  text-align: center;
+  font-size: 3em;
+  /* padding-top: 10%; */
 }
 header{
-		background-color: #FFE521;
-	width: 100%;
-	position: fixed;
-	height: 70px;
-	text-align: center;	
-	color: rgba(0, 0, 0, 0.87);
-	height: 70px;
-	box-sizing: border-box;
-	background-color: #FFE521	
-	}
-header .btn-menu{
-		display: none;
-	 width: 40px;
-	 height: 50px;
-	 padding: 10px;
-	 margin-left:2px;
-	 margin-top: 0px;
-	 border-right: 1px solid rgba(0, 0, 0, 0.3);
-}
-header label:hover{
-	 cursor: pointer;
-	 background: rgba(0, 0, 0, 0.3);
- 
-} 	
-/* estilos nav */	
-nav{
-	position: fixed;
-	width: 250px;
-	height: 100%;
-	background-color: #FFE521;
-	border-right: solid 1px gray;
-	border-top: solid 1px gray;
-}
-ul{
-	list-style: none;
-	display: block;
-	padding: 0;
-}
-.li-menu{
-	text-align: left; 
-	width: 100%;
-	height:70px;
-	border-bottom: 1px solid gray;
-	opacity: 1.5;
-	overflow: hidden;
-	display:block;
-}
-.profile{ 
-	border-top: 1px solid gray;
-  background-color: #fafafa;
-  height: 70px;
-}
-p.parrafo{
-	position: relative;
-	padding:16px;
-	padding-right: 25px;
-	float: center;
-	color: #2b2b2b;
-	opacity: 1.2;
-	font-size: 1.2em;
-	transition: opacity .2s;	
-}
-.logo {
-	float: center;
-	width: 200px;
-  height: 55px;
-  margin:  7.5px 25px;
-	color: #000000;
-	opacity: 5.5;
-	text-align: center;
-}
-.li-logo{
   background-color: white;
-  height: 70px;
+  background-image: url("laboratoria-logo.png");
+  background-size: 230px ;
+  background-repeat: no-repeat;
+	background-position: 50% ;
+  display: block;
+	width: 100%;
+	position: fixed;
+	height: 70px;
+  box-sizing: border-box;	
+  border-bottom: 3px solid #FFE521; 
 }
-
-.li-menu:hover {
-	cursor: pointer;
-	width:100%;
-	background-color:  rgba(0,0,0,0.3); 
+.titles{
+  font-family: 'Bitter', serif;
 }
-
 /* clase para elementos q estaran ocultos */
 .hidden{
 	display: none;
  }
  /* estilos para el contenedor de selectores */
 .form-selectores{
-	margin-left:  250px;
-	padding-left: 2px;
-	height: 285px;
-	background-color: #E8F6F3;
-	padding-top: 85px;
-
+  display: block;
+	height: 200px;
+  background-color: rgba(0,0,100,0);
+  text-align: center;
+	padding-top: 15%;
 }
 .container-select	{
-	margin: 5px;
 	height: 60px;
 	display: block;
 	width: 100%;
@@ -113,28 +45,26 @@ p.parrafo{
 /* estilos al selector de orden */
 .select-cohorts, #select-order {
 	margin: 0% auto;
-	height: 4em;
+	height: 30px;
 	width: 50%;
 	border-radius:10px;
 	border-color: #F2F3F4 ;
 	line-height: 145%;
-	background-color: #FBFCFC;
-	}
-	.order-direction{
-		margin: 5px;
-	}
+	background-color: rgba(0,100,0,0);
+	border: 1px solid #FF009E;
+  }
 	
 /* estilos al buscador de esytudiantes */
 input#search{
-	width:70%;
-	height:3em;
+	width:40%;
+	height:40px;
 	border-radius: 10px;
-	background-color:#FFE521;
+	background-color:#FF009E;
 	/* margin: 10px; */
 	outline: none;
 	border: 0px;
 	color: white;
-	font-size: 1.2em;
+	/* font-size: 1.2em; */
 	text-align: right;
 	padding-right:15px;
 	background-image: url(search.png);
@@ -156,95 +86,76 @@ input#search:focus{
 } 
 /* estilos para el contenedor de los divs de ususarios */
   .container-profiles-users{
-	width: 100%;
-	margin-left:  250px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 30px;
+  /* flex: 4; */
+	
 	}
 	/* divs ususarios */
   .div-user{
-	display: inline-block;
-	background-color: #FF009E;
-	width: 25%;
+	
+	background-color: #56F89A;
+	width: 15%;
 	height: 150px;
 	border-style: none;
-	border-color:  #0D47A1    ;
-	color: #2b2b2b;
-	margin: 10px;
-	padding: 5px;
-	box-sizing: border-box;
-	font-size: 10px;
-	flex: 1;
+	border-radius: 6px ;
+  color: #2b2b2b;
+	margin: 5px 25px;
+	padding: 5px 8px;
+  box-sizing: border-box;
+  font-size: 15px;
+  float: left;	
   }
-	@media(max-width: 1100px){
-		.form-selectores{
-			height: 220px;
-		}
-	 }
-  @media(max-width: 728px){
-h1{
-	margin-top: 0;
-	padding-top: 15px;
-	padding-left:  60px;
-}		
-body {
-		margin-top: 0 ;
-		padding: 0;
-	}
-	header{
-			padding: 0px ;
-			position: static;
-			margin: 0 0;
-	}
-	
-	header label.btn-menu {
-		display: block;
-		margin-top: -50px;
-	}
-	nav{
-	  background: #FFE521;
-	  width: 60%;
-	  height: 100%;
-	  margin-left: -70%;
-	  transition: all 0.5s;
-	}
-	.btn-menu:checked ~ nav{
-		margin: 0;
-		margin-top: -2px;
-	}
-	.form-selectores {
-		width: 100%;
-		margin-left: 0;
-		padding-top: 15px; 
-  }
-  .container-profiles-users{
-		width: 100%;
-    margin-left: 0;
+  ul{
+    list-style: none;
     margin: 0;
-	}
+    padding: 0;
+  }
+  li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+	 @media(max-width: 1100px){
+		.form-selectores{
+      height: 220px;
+      padding-top: 20% 
+    }
+    .div-user{
+      width: 25%;
+    }
+	 }
+  @media(max-width: 730px){
+  .form-selectores{
+padding-top: 20%;
+  }
+}
+	@media(max-width: 450px){
+ h1{
+   font-size: 2em;
+ }
+ .form-selectores{
+   padding-top: 35%;
+ }
+ .select-cohorts, #select-order,  #search{
+   width: 100%;
+ }
+  input#search{
+    width: 95%;
   }
   
-	@media(max-width: 400px){
-nav{
-	width: 100%;
-	margin-left: -450px;
-}
-.btn-menu:checked ~ nav{
-	margin: 0;
-	margin-top: -2px;
-
-}
 	}
-	@media(max-width: 250px){
-		nav{
-			width: 100%;
-			margin-left: -350px;
-		}
-		.btn-menu:checked ~ nav{
-			margin: 0;
-			margin-top: -9px;
-		
-		}
-		header label.btn-menu {
-			display: block;
-			margin-top: -60px;
-		}
-			}
+	@media(max-width: 670px){
+    .div-user{
+    width: 35%;
+  }
+  }
+  @media(max-width: 450px){
+  .div-user{
+  width: 100%;
+  display: block;
+  padding: 0;
+  margin: 10px 0px;
+  }
+  }
