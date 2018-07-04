@@ -14,30 +14,27 @@ let options = {
   search: ''
 }
 const getListOfCohorts = () => {
-    fetch('../data/cohorts.json')
-        .then((response) => response.json())
-        .then((cohorts) => {
-            dataCohorts = cohorts;
-            console.log(dataCohorts)
-            cohorts.forEach(cohort => selectorOfCohorts.innerHTML += `<option>${cohort.id}</option>`)
-            console.log(options);
-        })
+  fetch('../data/cohorts.json')
+    .then((response) => response.json())
+    .then((cohorts) => {
+      dataCohorts = cohorts;
+      cohorts.forEach(cohort => selectorOfCohorts.innerHTML += `<option>${cohort.id}</option>`)
+    })
 return selectorOfCohorts
 }
 const pintarStudents = (users) => {
-    for (const user of users) {
-        console.log(users);
-            profilesUsers.innerHTML += `
-        <div class='div-user'>
-        <h3>${user.name}</h3>
-        <ul>
-        <li class='li-progress'>Ejercicios: ${user.stats.exercises.percent}</li>
-        <li class='li-progress'>Lecturas: ${user.stats.reads.percent}</li>
-        <li class='li-progress'>Quizzes:${user.stats.quizzes.percent}</li>
-        <li class='li-progress'>Promedio/quizzes: ${user.stats.quizzes.scoreAvg}</li>
-        <li class='li-progress'>Porcentaje total: ${ user.stats.percent}</li>
-        </ul>
-        </div>`  
+  for (const user of users) {
+  profilesUsers.innerHTML += `
+    <div class='div-user'>
+      <h3>${user.name}</h3>
+      <ul>
+      <li class='li-progress'>Ejercicios: ${user.stats.exercises.percent}</li>
+      <li class='li-progress'>Lecturas: ${user.stats.reads.percent}</li>
+      <li class='li-progress'>Quizzes:${user.stats.quizzes.percent}</li>
+      <li class='li-progress'>Promedio/quizzes: ${user.stats.quizzes.scoreAvg}</li>
+      <li class='li-progress'>Porcentaje total: ${ user.stats.percent}</li>
+      </ul>
+      </div>`  
     };
     return profilesUsers
 }
@@ -56,11 +53,9 @@ const getNameUsersOfCohort = () => {
             .then((response) => response.json())
             .then((progress) => {
               options.cohort = cohorts.find(item => item.id === selectorOfCohorts.value);
-              console.log(options.cohort);
               users = responseUsers.filter((user) => user.signupCohort === options.cohort.id);
               options.cohortData.users = users
               options.cohortData.progress = progress
-              
               return pintarStudents(processCohortData(options))
 
             })
@@ -81,7 +76,7 @@ selectorOfCohorts.addEventListener('change', (e) => {
 
 
 selectOrder.addEventListener('change', (e) => {
-    e.preventDefault();
+  e.preventDefault();
     options.orderBy = selectOrder.value;
     let optionTextValue = selectOrder.options[selectOrder.selectedIndex];
     options.orderDirection = optionTextValue.text.substr(-3);
@@ -91,10 +86,9 @@ selectOrder.addEventListener('change', (e) => {
 
 
 btnSearch.addEventListener('click',(e) =>{
-    e.preventDefault();
-    options.search = inputSearchStudent.value.toL;
-   console.log(options)
-    profilesUsers.innerHTML = ''
-    return getNameUsersOfCohort()     
+  e.preventDefault();
+  options.search = inputSearchStudent.value.toLowerCase();
+  profilesUsers.innerHTML = ''
+  getNameUsersOfCohort()     
 });
 
