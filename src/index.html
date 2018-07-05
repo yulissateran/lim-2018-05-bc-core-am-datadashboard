@@ -1,56 +1,50 @@
 <!Doctype html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-  <title>prueba</title>
+  <meta charset="UTF-8">
+  <title>Data Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Bitter|Open+Sans:400,800" rel="stylesheet">
- 
 </head>
+
 <body>
-  <header></header>
-            <form class="form-selectores ">
-              <h1>Data Dashboard</h1>
-              <div class="container-select">
-                  <label for="select-cohorts" class="titles">Cohort</label>
-                  <select id="select-cohorts" class="select-cohorts" value="selecciona un cohort" ></select>
-              </div>
-              <div class="container-select">
-              <label for="select-order" class="select-order titles">Ordenar</label>
-              <select disabled name="select-order" id="select-order" class = "select-order ">
-               <option value="name" class="asc">Nombre--ASC</option>
-               <option value="reads" class="asc">Lecturas--ASC</option>
-               <option value="quizzes" class="asc">Quizzes-ASC</option>
-               <option value="quizzes-avg" class="asc">Promedio en cuestionarios--ASC</option>
-               <option value="exercises" class="asc">Ejercicios--ASC</option>
-               <option value="percent" class="asc">Completitud del curso--ASC</option>
-               <option value="name" class="des">Nombre--DES</option>
-              <option value="reads" class="des">Lecturas--DES</option>
-              <option value="quizzes" class="des"></option>Quizzes--DES</option>
-              <option value="quizzes-avg" class="des">Promedio en cuestionarios--DES</option>
-              <option value="exercises" class="des">Ejercicios-DES</option>
-                <option value="percent" class="des">Completitud del curso-DES</option>
-             </select>
-            </div>
-              <div class="container-select">  
-              <label for="filter-users" class ="titles">Buscar</label>
-              <input type="text" id="search" class="filter-users"placeholder="Buscar estudiante..." disabled> <button type = "button" id="btn-search" disabled>buscar</button>
-            </div>
-      </form>
-          <main id="profiles-users" class="container-profiles-users ">
-          </main>
-          <script src="data.js"></script>
-          <script src="main.js"></script>
+  <header>
+  </header>
+  <form class="form-selectores ">
+    <h1>Data Dashboard</h1>
+    <div class="container-select">
+      <label for="select-cohorts" class="titles">Cohort</label>
+      <select id="select-cohorts" class="select-cohorts" value="selecciona un cohort"></select>
+    </div>
+    <div class="container-select">
+      <label for="select-order" class="select-order titles">Ordenar</label>
+      <select disabled name="select-order" id="select-order" class="select-order ">
+        <option value="name" class="asc">Nombre--ASC</option>
+        <option value="reads" class="asc">Lecturas--ASC</option>
+        <option value="quizzes" class="asc">Quizzes-ASC</option>
+        <option value="quizzes-avg" class="asc">Promedio en cuestionarios--ASC</option>
+        <option value="exercises" class="asc">Ejercicios--ASC</option>
+        <option value="percent" class="asc">Completitud del curso--ASC</option>
+        <option value="name" class="des">Nombre--DES</option>
+        <option value="reads" class="des">Lecturas--DES</option>
+        <option value="quizzes" class="des"></option>Quizzes--DES</option>
+        <option value="quizzes-avg" class="des">Promedio en cuestionarios--DES</option>
+        <option value="exercises" class="des">Ejercicios-DES</option>
+        <option value="percent" class="des">Completitud del curso-DES</option>
+      </select>
+    </div>
+    <div class="container-select">
+      <label for="filter-users" class="titles">Buscar</label>
+      <input type="text" id="search" class="filter-users" placeholder="Buscar estudiante..." disabled>
+      <button type="button" id="btn-search" disabled>buscar</button>
+    </div>
+  </form>
+  <main id="profiles-users" class="container-profiles-users ">
+  </main>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
