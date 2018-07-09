@@ -1,5 +1,4 @@
 # Data Dashboard
-
 Este proyecto fue desarrollado para facilitarle a las Training Managers de Laboratoria ver de mánera más fácil y rápida el progreso que las estudiantes tienen en el LMS(Learning Management System), para tener un mejor entendimiento de cómo va cada estudiante en su proceso de aprendizaje.
 # Investigación de las prioridades de las usuarias
 A través de una entrevista a la Training Manager de Lima, Alejandra Ramirez Villarán, se descubrió que la  información más importante que las Traing Managers necesitan ver en el LMS es el promedio de avance en ejercicios de todo el cohort,ya que un mayor porcentaje de ejercicios desarrollados son un claro indicador de que el cohort está alcanzado su aprendizaje en los niveles esperados.

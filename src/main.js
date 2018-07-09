@@ -73,8 +73,6 @@ selectorOfCohorts.addEventListener('change', (e) => {
         getNameUsersOfCohort();     
 });
 
-
-
 selectOrder.addEventListener('change', (e) => {
   e.preventDefault();
     options.orderBy = selectOrder.value;
@@ -91,4 +89,3 @@ btnSearch.addEventListener('click',(e) =>{
   profilesUsers.innerHTML = ''
   getNameUsersOfCohort()     
 });
-
