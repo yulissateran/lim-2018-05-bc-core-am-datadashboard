@@ -11,7 +11,11 @@ Así, se pensó en crear una interfaz donde las TMs puedan ver y usar la data de
 - Muestra el progresso de cada alumna, para que la Trainig Manager pueda elaborar un plan de acción junto a quienes tengan dificultades.
 - Permite acceder a los datos desde cualquier lugar del mundo. Para que la Training Manager esté informada siempre de como estan           avanzando los cohorts.
 - Permite acceder a la informacion desde cualquier pantalla: móvil, pc, etc.
-## Decisiones de diseño
+## Interfaz del programa
+Para los colores de la interfaz se utilizaron los colores de la marca Laboratoria,
+así como las fuentes de letras de la marca: 
+- Bitter regular.
+- Open sans.
 
 ## Instrucciones 
 Para visualizar la funcionalidad del proyecto  ingresa aquí [repositorio1](https://github.com/dcrisanto/lim-2018-05-bc-core-am-datadashboard) o aquí [repositorio22](https://github.com/yulissateran/lim-2018-05-bc-core-am-datadashboard) 
