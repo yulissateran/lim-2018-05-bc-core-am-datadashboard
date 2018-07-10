@@ -2,12 +2,10 @@
 	margin:0px;
 	padding: 0px;  
 } 
-/* estilos header */
 h1{
 	font-family: 'Bitter', serif;
   text-align: center;
   font-size: 3em;
-  /* padding-top: 10%; */
 }
 header{
   background-color: white;
@@ -60,11 +58,9 @@ input#search{
 	height:40px;
 	border-radius: 10px;
 	background-color:#FF009E;
-	/* margin: 10px; */
 	outline: none;
 	border: 0px;
 	color: white;
-	/* font-size: 1.2em; */
 	text-align: right;
 	padding-right:15px;
 	background-image: url(search.png);
@@ -76,7 +72,7 @@ input#search:focus{
 	background-position: 3000px 15px;
 }
 ::-webkit-input-placeholder{
-	color: #2b2b2b;
+	color: white;
 	text-align: right;
 	opacity: 2.5;
 }
@@ -89,13 +85,12 @@ input#search:focus{
   width: 100%;
   box-sizing: border-box;
   padding-top: 30px;
-  /* flex: 4; */
 	
 	}
 	/* divs ususarios */
   .div-user{
 	
-	background-color: #56F89A;
+	background-color: #56f89a;
 	width: 15%;
 	height: 150px;
 	border-style: none;

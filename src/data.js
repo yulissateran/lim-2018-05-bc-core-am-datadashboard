@@ -6,8 +6,7 @@ const validatorPromQuizzes =(a,b)=>{
 window.computeUsersStats=(users, progress, courses) =>{
   const usersWithStats = users;
   const keysProgress = Object.keys(progress);
-  let scoreOfCohortInExercises =0;
-  let promedioPercentOfExercises='';
+  let scoreOfCohortInExercises = 0;
   let studentQuantiti = 0;
   try{ 
     for(const course of courses){

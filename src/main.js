@@ -20,11 +20,12 @@ const getListOfCohorts = () => {
       dataCohorts = cohorts;
       cohorts.forEach(cohort => selectorOfCohorts.innerHTML += `<option>${cohort.id}</option>`)
     })
-return selectorOfCohorts
+  return selectorOfCohorts
 }
+
 const pintarStudents = (users) => {
   for (const user of users) {
-  profilesUsers.innerHTML += `
+    profilesUsers.innerHTML += `
     <div class='div-user'>
       <h3>${user.name}</h3>
       <ul>
@@ -34,13 +35,12 @@ const pintarStudents = (users) => {
       <li class='li-progress'>Promedio/quizzes: ${user.stats.quizzes.scoreAvg}</li>
       <li class='li-progress'>Porcentaje total: ${ user.stats.percent}</li>
       </ul>
-      </div>`  
-    };
-    return profilesUsers
+      </div>`
+  };
+  return profilesUsers
 }
 
 //Creando la lista de cohorts 
-let users = '';
 //lista de alumnos
 const getNameUsersOfCohort = () => {
   fetch('../data/cohorts.json')
@@ -53,8 +53,7 @@ const getNameUsersOfCohort = () => {
             .then((response) => response.json())
             .then((progress) => {
               options.cohort = cohorts.find(item => item.id === selectorOfCohorts.value);
-              users = responseUsers.filter((user) => user.signupCohort === options.cohort.id);
-              options.cohortData.users = users
+              options.cohortData.users = responseUsers.filter((user) => user.signupCohort === options.cohort.id);
               options.cohortData.progress = progress
               return pintarStudents(processCohortData(options))
 
@@ -65,27 +64,27 @@ const getNameUsersOfCohort = () => {
 // Evento para listar los cohorts
 document.addEventListener('DOMContentLoaded', (e) => {
   e.preventDefault();
-   getListOfCohorts();
+  getListOfCohorts();
 })
 // Evento para selector, crea la lista de alumnas según el cohort
 selectorOfCohorts.addEventListener('change', (e) => {
-    e.preventDefault(); 
-        getNameUsersOfCohort();     
+  e.preventDefault();
+  getNameUsersOfCohort();
 });
 
 selectOrder.addEventListener('change', (e) => {
   e.preventDefault();
-    options.orderBy = selectOrder.value;
-    let optionTextValue = selectOrder.options[selectOrder.selectedIndex];
-    options.orderDirection = optionTextValue.text.substr(-3);
-    profilesUsers.innerHTML =''
-    getNameUsersOfCohort() 
+  options.orderBy = selectOrder.value;
+  let optionTextValue = selectOrder.options[selectOrder.selectedIndex];
+  options.orderDirection = optionTextValue.text.substr(-3);
+  profilesUsers.innerHTML = ''
+  getNameUsersOfCohort()
 });
 
 
-btnSearch.addEventListener('click',(e) =>{
+btnSearch.addEventListener('click', (e) => {
   e.preventDefault();
   options.search = inputSearchStudent.value.toLowerCase();
   profilesUsers.innerHTML = ''
-  getNameUsersOfCohort()     
+  getNameUsersOfCohort()
 });
